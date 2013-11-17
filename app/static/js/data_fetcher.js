@@ -2,7 +2,7 @@ console.log("Data fetcher loaded!");
 dataOut = $("#data");
 
 var fetchData = function() {
-    var requestUrl = "get_data/10/";
+    var requestUrl = "http://127.0.0.1:5000/series/";
     var request = new XMLHttpRequest();
 
     request.onreadystatechange = function() {
@@ -11,9 +11,14 @@ var fetchData = function() {
             var dataJson = JSON.parse(request.responseText);
             plugDataIntoPage(dataJson);
         }
+        else {
+            console.log(request.responseText);
+            dataJson = JSON.parse(request.responseText);
+            plugDataIntoPage(dataJson)
+        }
     };
 
-    request.open("GET", requestUrl, true);
+    request.open("POST", requestUrl, true);
     request.send();
 };
 

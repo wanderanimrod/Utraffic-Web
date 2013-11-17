@@ -23,4 +23,4 @@ def get_data(visualisation=0):
     )
 
 if __name__ == '__main__':
-    app.run()
+    app.run(port=5001)
