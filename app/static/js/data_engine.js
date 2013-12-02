@@ -1,28 +1,15 @@
-dataOut = $("#data");
-
-var fetchData = function() {
-    var requestUrl = "http://127.0.0.1:5000/series/";
+function createSeries() {
     var request = new XMLHttpRequest();
-
+    request.open("POST", "http://127.0.0.1:5000/series/?debug=true", true);
     request.onreadystatechange = function() {
-        if(request.readyState == 4 && request.status == 200) {
-            console.log(request.responseText);
-            var dataJson = JSON.parse(request.responseText);
-            plugDataIntoPage(dataJson);
-        }
-        else {
-            console.log(request.responseText);
-            dataJson = JSON.parse(request.responseText);
-            plugDataIntoPage(dataJson)
+        if (request.readyState == 4 && request.status == 201) {
+            var responseJson = JSON.parse(request.responseText);
+            var series = new Series(responseJson);
+            console.log(series);
+            return series;
         }
     };
-
-    request.open("POST", requestUrl, true);
     request.send();
-};
+}
 
-var plugDataIntoPage = function(dataJson) {
-    dataOut.text(JSON.stringify(dataJson))
-};
-
-fetchData();
+createSeries();
