@@ -1,4 +1,3 @@
-console.log("Data fetcher loaded!");
 dataOut = $("#data");
 
 var fetchData = function() {
