@@ -31,48 +31,86 @@
                     </div>
                 </div>
             </div>
-            <div class="ui animated divided list">
-                <div id="simObject" class="ui grid item">
+            <div class="ui divided list">
+                <div class="ui grid item simObject">
                     <div class="two wide column">
                         <i class="ui flipped truck icon"></i>
                     </div>
                     <div id="objectId" class="two wide column">1</div>
-                    <div class="ten wide column">
-                        <div id="velocity" class="tiny teal ui button" style="font-size: 9px">vel</div>
-                        <div id="velocity" class="tiny ui button" style="font-size: 9px">acc</div>
-                        <div id="velocity" class="tiny teal ui button" style="font-size: 9px">pos</div>
-                        <div id="velocity" class="tiny ui button" style="font-size: 9px">lane</div>
+                    <div class="ten wide column objectProperties">
+                        <div id="velocity" class="tiny teal ui button objectProperty">vel</div>
+                        <div id="velocity" class="tiny ui button objectProperty">acc</div>
+                        <div id="velocity" class="tiny teal ui button objectProperty">pos</div>
+                        <div id="velocity" class="tiny ui button objectProperty">lane</div>
                     </div>
                 </div>
-                <div id="simObject" class="item">
-                    <i class="ui flipped truck icon"></i>
-                    <a id="objectId">2</a>
+                <div class="ui grid item simObject">
+                    <div class="two wide column">
+                        <i class="ui flipped truck icon"></i>
+                    </div>
+                    <div id="objectId" class="two wide column">2</div>
+                    <div class="ten wide column objectProperties">
+                        <div id="velocity" class="tiny teal ui button objectProperty">vel</div>
+                        <div id="velocity" class="tiny ui button objectProperty">acc</div>
+                        <div id="velocity" class="tiny teal ui button objectProperty">pos</div>
+                        <div id="velocity" class="tiny ui button objectProperty">lane</div>
+                    </div>
                 </div>
-                <div id="simObject" class="item">
-                    <i class="ui flipped truck icon"></i>
-                    <a id="objectId">3</a>
+                <div class="ui grid item simObject">
+                    <div class="two wide column">
+                        <i class="ui flipped truck icon"></i>
+                    </div>
+                    <div id="objectId" class="two wide column">3</div>
+                    <div class="ten wide column objectProperties">
+                        <div id="velocity" class="tiny teal ui button objectProperty">vel</div>
+                        <div id="velocity" class="tiny ui button objectProperty">acc</div>
+                        <div id="velocity" class="tiny teal ui button objectProperty">pos</div>
+                        <div id="velocity" class="tiny ui button objectProperty">lane</div>
+                    </div>
                 </div>
-                <div id="simObject" class="item">
-                    <i class="ui flipped truck icon"></i>
-                    <a id="objectId">4</a>
+                <div class="ui grid item simObject">
+                    <div class="two wide column">
+                        <i class="ui flipped truck icon"></i>
+                    </div>
+                    <div id="objectId" class="two wide column">4</div>
+                    <div class="ten wide column objectProperties">
+                        <div id="velocity" class="tiny teal ui button objectProperty">vel</div>
+                        <div id="velocity" class="tiny ui button objectProperty">acc</div>
+                        <div id="velocity" class="tiny teal ui button objectProperty">pos</div>
+                        <div id="velocity" class="tiny ui button objectProperty">lane</div>
+                    </div>
                 </div>
-                <div id="simObject" class="item">
-                    <i class="ui flipped truck icon"></i>
-                    <a id="objectId">5</a>
+                <div class="ui grid item simObject">
+                    <div class="two wide column">
+                        <i class="ui flipped truck icon"></i>
+                    </div>
+                    <div id="objectId" class="two wide column">5</div>
+                    <div class="ten wide column objectProperties">
+                        <div id="velocity" class="tiny teal ui button objectProperty">vel</div>
+                        <div id="velocity" class="tiny ui button objectProperty">acc</div>
+                        <div id="velocity" class="tiny teal ui button objectProperty">pos</div>
+                        <div id="velocity" class="tiny ui button objectProperty">lane</div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div id="graphingArea" class="twelve wide column">
-        <div class="ui two column grid" style="height: 350px;">
-            <div class="column" style="height: 330px; background: teal;">
-                <div id="vis1"></div>
+    <div id="graphingArea" class="twelve wide column" style="height: 700px;">
+        <div class="ui two column grid visRow">
+            <div class="column visPane">
+                <div class="vis"></div>
             </div>
-            <div class="column" style="height: 330px; background-color: orange;"></div>
+            <div class="column visPane">
+                <div class="vis"></div>
+            </div>
         </div>
-        <div class="ui two column grid" style="height: 350px;">
-            <div class="column" style="height: 330px; background-color: orange"></div>
-            <div class="column" style="height: 330px; background-color: teal"></div>
+        <div class="ui two column grid visRow">
+            <div id="vis3" class="column visPane">
+                <div class="vis"></div>
+            </div>
+            <div id="vis4" class="column visPane">
+                <div class="vis"></div>
+            </div>
         </div>
     </div>
 </div>
