@@ -7,7 +7,8 @@
     {#    <script type="text/javascript" src="/static/css/semantic/packaged/javascript/semantic.js"></script>#}
 </head>
 <body>
-<h3 class="ui top block header left">Utraffic Visualiser</h3>
+<h3 class="ui block header">Utraffic Visualiser</h3>
+
 <div class="ui grid" style="margin-top: 30px;">
     <div id="controlBar" class="four wide column">
         <div id="controls" class="ui row">
@@ -18,22 +19,53 @@
                 <i class="red stop icon"></i>Stop
             </div>
         </div>
-        <div class="ui pointing secondary menu" style="margin-top: 30px;">
-            <a id="simObjectsMenuItem" class="active item" data-tab="simObjectsTab">Objects
-                <div id="numberOfObjectsLabel" class="ui label teal">10</div>
-            </a>
-            <a id="visualisationsMenuItem" class="item" data-tab="visualisationsTab">Visualisations
-                <div id="numberOfVisualisationsLabel" class="ui label">2</div>
-            </a>
-        </div>
-        <div id="subMenuActions" class="ui row">
-            <i class="add icon"></i>
-            <i class="flipped purple large truck icon"></i>
+        <div class="ui segment">
+            <div class="ui pointing secondary menu">
+                <a id="simObjectsMenuItem" class="active item" data-tab="simObjectsTab">Objects
+                    <div id="numberOfObjectsLabel" class="ui label teal">5</div>
+                </a>
+
+                <div class="right menu">
+                    <div class="item">
+                        <div class="ui mini labeled icon button" style="font-size: 12px;">
+                            <i class="small red add icon"></i>Car
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ui animated divided list">
+                <div id="simObject" class="ui grid item">
+                    <div class="two wide column">
+                        <i class="ui flipped truck icon"></i>
+                    </div>
+                    <div id="objectId" class="two wide column">1</div>
+                    <div class="ten wide column">
+                        <div id="velocity" class="tiny teal ui button" style="font-size: 9px">vel</div>
+                        <div id="velocity" class="tiny ui button" style="font-size: 9px">acc</div>
+                        <div id="velocity" class="tiny teal ui button" style="font-size: 9px">pos</div>
+                        <div id="velocity" class="tiny ui button" style="font-size: 9px">lane</div>
+                    </div>
+                </div>
+                <div id="simObject" class="item">
+                    <i class="ui flipped truck icon"></i>
+                    <a id="objectId">2</a>
+                </div>
+                <div id="simObject" class="item">
+                    <i class="ui flipped truck icon"></i>
+                    <a id="objectId">3</a>
+                </div>
+                <div id="simObject" class="item">
+                    <i class="ui flipped truck icon"></i>
+                    <a id="objectId">4</a>
+                </div>
+                <div id="simObject" class="item">
+                    <i class="ui flipped truck icon"></i>
+                    <a id="objectId">5</a>
+                </div>
+            </div>
         </div>
     </div>
-    <div id="graphingArea" class="twelve wide column">
-        <div class="ui segment"></div>
-    </div>
+    <div id="graphingArea" class="twelve wide column"></div>
 </div>
 
 </body>
