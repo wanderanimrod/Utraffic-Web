@@ -4,11 +4,12 @@
     <title>Utraffic Visualiser</title>
     <link href="/static/css/semantic/packaged/css/semantic.min.css" rel="stylesheet" media="screen">
     <script type="text/javascript" src="/static/js/libraries/jquery.1.10.2.min.js"></script>
-    <script type="text/javascript" src="/static/css/semantic/packaged/javascript/semantic.js"></script>
+    {#    <script type="text/javascript" src="/static/css/semantic/packaged/javascript/semantic.js"></script>#}
 </head>
 <body>
-<div class="ui grid">
-    <div id="controlsAndObjects" class="four wide column">
+<h3 class="ui top block header left">Utraffic Visualiser</h3>
+<div class="ui grid" style="margin-top: 30px;">
+    <div id="controlBar" class="four wide column">
         <div id="controls" class="ui row">
             <div id="playPause" class="ui mini labeled icon button">
                 <i class="teal play icon"></i>Start
@@ -17,18 +18,19 @@
                 <i class="red stop icon"></i>Stop
             </div>
         </div>
-        <div id="objectsBar" class="row" style="margin-top: 20px">
-            <div class="ui secondary pointing menu">
-                <a id="simObjectsMenuItem" class="active item">Objects
-                    <div id="numberOfObjectsLabel" class="ui label teal">10</div>
-                </a>
-                <a id="visualisationsMenuItem" class="item">Visualisations
-                    <div id="numberOfVisualisationsLabel" class="ui label">2</div>
-                </a>
-            </div>
+        <div class="ui pointing secondary menu" style="margin-top: 30px;">
+            <a id="simObjectsMenuItem" class="active item" data-tab="simObjectsTab">Objects
+                <div id="numberOfObjectsLabel" class="ui label teal">10</div>
+            </a>
+            <a id="visualisationsMenuItem" class="item" data-tab="visualisationsTab">Visualisations
+                <div id="numberOfVisualisationsLabel" class="ui label">2</div>
+            </a>
+        </div>
+        <div id="subMenuActions" class="ui row">
+            <i class="add icon"></i>
+            <i class="flipped purple large truck icon"></i>
         </div>
     </div>
-
     <div id="graphingArea" class="twelve wide column">
         <div class="ui segment"></div>
     </div>
