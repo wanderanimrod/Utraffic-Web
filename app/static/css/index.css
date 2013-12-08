@@ -1,7 +1,7 @@
 .vis {
     height: 320px;
     background-color: teal;
-    opacity: 0.5;
+    opacity: 0.3;
 }
 .vis:hover {
     opacity: 1;
@@ -10,4 +10,10 @@
     -ms-transition: opacity 1s;
     -o-transition: opacity 1s;
     transition: opacity 1s;
+}
+.objectProperties {
+    visibility: hidden;
+}
+.simObject {
+
 }

@@ -9,7 +9,6 @@ function prepareGraphCanvas() {
 
 function silenceControlBarItems() {
     $('.objectProperty').css('font-size', 7);
-    $('.objectProperties').css('visibility', 'hidden');
     $('.simObject').hover(function () {
         $(this).children('.objectProperties').css('visibility', 'visible');
     });
