@@ -11,3 +11,9 @@
 .addVisSign {
     color: whitesmoke;
 }
+.addVisSign:hover {
+    cursor: pointer;
+}
+.addVisSign:active {
+    color: yellow;
+}
