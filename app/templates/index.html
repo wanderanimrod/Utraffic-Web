@@ -9,14 +9,7 @@
 
 <div class="ui grid" style="margin-top: 30px;">
     <div id="controlBar" class="four wide column">
-        <div id="controls" class="ui row">
-            <div id="playPause" class="ui mini labeled icon button">
-                <i class="teal play icon"></i>Start
-            </div>
-            <div id="stop" class="ui mini labeled icon button">
-                <i class="red stop icon"></i>Stop
-            </div>
-        </div>
+        {% include 'sim_controls.html' %}
         <div class="ui segment">
             <div class="ui pointing secondary menu">
                 <a id="simObjectsMenuItem" class="active item" data-tab="simObjectsTab">Objects
