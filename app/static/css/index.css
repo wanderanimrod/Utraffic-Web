@@ -1,19 +1,13 @@
 .vis {
     height: 320px;
     background-color: teal;
-    opacity: 0.3;
-}
-.vis:hover {
-    opacity: 1;
-    -webkit-transition: opacity 1s;
-    -moz-transition: opacity 1s;
-    -ms-transition: opacity 1s;
-    -o-transition: opacity 1s;
-    transition: opacity 1s;
+    display: table;
+    width: 100%;
+    opacity: 0.8;
 }
 .objectProperties {
     visibility: hidden;
 }
-.simObject {
-
+.addVisSign {
+    color: whitesmoke;
 }
