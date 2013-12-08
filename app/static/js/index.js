@@ -5,17 +5,6 @@ function prepareGraphCanvas() {
     var visPanes = $('.visPane');
     visPanes.css('height', visRows.height() - 27);
 
-    fadeVisPanes();
-}
-
-function fadeVisPanes() {
-    var panes = $('.vis');
-    panes.hover(function () {
-        $(this).animate({opacity: 1}, 'slow');
-    });
-    panes.mouseleave(function () {
-        $(this).animate({opacity: 0.5}, '0.1s');
-    });
 }
 
 function silenceControlBarItems() {
