@@ -11,19 +11,7 @@
     <div id="controlBar" class="four wide column">
         {% include 'sim_controls.html' %}
         <div class="ui segment">
-            <div class="ui pointing secondary menu">
-                <a id="simObjectsMenuItem" class="active item" data-tab="simObjectsTab">Objects
-                    <div id="numberOfObjectsLabel" class="ui label teal">5</div>
-                </a>
-
-                <div class="right menu">
-                    <div class="item">
-                        <div class="ui mini labeled icon button" style="font-size: 12px;">
-                            <i class="small red add icon"></i>Car
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% include 'sim_objects_control_menu.html' %}
             <div class="ui divided list">
                 {% include 'sim_object.html' %}
                 {% include 'sim_object.html' %}
