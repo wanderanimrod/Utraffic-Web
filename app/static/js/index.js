@@ -5,16 +5,11 @@ function prepareGraphCanvas() {
     var visPanes = $('.visPane');
     visPanes.css('height', visRows.height() - 27);
 
-    var visualisations = $('.vis');
-    visualisations
-        .css('height', 320)
-        .css('background-color', 'teal')
-        .css('opacity', 0.5);
-
-    fadeVisPanes(visualisations);
+    fadeVisPanes();
 }
 
-function fadeVisPanes(panes) {
+function fadeVisPanes() {
+    var panes = $('.vis');
     panes.hover(function () {
         $(this).animate({opacity: 1}, 'slow');
     });
