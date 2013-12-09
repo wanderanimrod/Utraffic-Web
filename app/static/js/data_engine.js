@@ -1,3 +1,14 @@
+var visualisations = [];
+
+function getNextVisId() {
+    var maxId = -1;
+    for(var i=0; i < visualisations.length; i++) {
+        var currentId = visualisations[i].id;
+        if(currentId > maxId) maxId = currentId;
+    }
+    return maxId + 1;
+}
+
 function createSeries() {
     var request = new XMLHttpRequest();
     request.open("POST", "http://127.0.0.1:5000/series/?debug=true", true);

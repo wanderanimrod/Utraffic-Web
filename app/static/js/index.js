@@ -32,5 +32,14 @@ function toggleObjectPropertyButtons() {
     });
 }
 
+function assignObjectIds() {
+    $('.visPlaceHolder').each(function() {
+        var visId = getNextVisId();
+        $(this).attr('id', visId);
+        visualisations.push(new Visualisation(visId));
+    });
+}
+
 prepareGraphCanvas();
+assignObjectIds();
 toggleObjectPropertyButtons();
