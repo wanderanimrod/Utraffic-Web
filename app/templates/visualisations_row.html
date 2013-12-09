@@ -1,5 +1,8 @@
 <div id="{{ visRow }}" class="two column ui grid visRow">
     {% for vis in range(2) %}
-        {% include 'visualisation_placeholder.html' %}
+        <div class="column visPane">
+            {% include 'visualisation_placeholder.html' %}
+            {% include 'visualisation.html' %}
+        </div>
     {% endfor %}
 </div>

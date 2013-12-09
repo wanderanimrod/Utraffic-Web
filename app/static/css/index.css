@@ -1,10 +1,20 @@
 .vis {
     background-color: whitesmoke;
+    z-index: -1;
 }
 .visPlaceHolder {
-    height: 320px;
     background-color: teal;
     opacity: 0.8;
+}
+.vis, .visPlaceHolder {
+    height: 320px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 94.5%;
+}
+.visPane {
+    position: relative;
 }
 .addVisSign {
     color: whitesmoke;
