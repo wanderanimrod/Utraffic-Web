@@ -7,15 +7,30 @@ function prepareGraphCanvas() {
 
 }
 
-function silenceControlBarItems() {
-    $('.objectProperty').css('font-size', 7);
-    $('.simObject').hover(function () {
-        $(this).children('.objectProperties').css('visibility', 'visible');
+function toggleObjectPropertyButtons() {
+    var simObjects = $('.simObject');
+    simObjects.hover(function () {
+        $(this).children('.objectProperty').css('visibility', 'visible');
     });
-    $('.simObject').mouseleave(function () {
-        $(this).children('.objectProperties').css('visibility', 'hidden');
+    simObjects.mouseleave(function () {
+        $(this).children('.objectProperty').each(function () {
+            if (!$(this).hasClass('objectPropertyTracked')) {
+                $(this).css('visibility', 'hidden');
+            }
+        });
+    });
+
+    var objectProperties = $('.objectProperty');
+    objectProperties.css('font-size', 7);
+    objectProperties.click(function () {
+        if ($(this).hasClass('objectPropertyTracked')) {
+            $(this).removeClass('objectPropertyTracked');
+        }
+        else {
+            $(this).addClass('objectPropertyTracked teal');
+        }
     });
 }
 
 prepareGraphCanvas();
-silenceControlBarItems();
+toggleObjectPropertyButtons();
