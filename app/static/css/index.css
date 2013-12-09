@@ -1,8 +1,9 @@
 .vis {
+
+}
+.visPlaceHolder {
     height: 320px;
     background-color: teal;
-    display: table;
-    width: 100%;
     opacity: 0.8;
 }
 .addVisSign {
