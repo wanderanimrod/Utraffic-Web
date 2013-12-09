@@ -24,7 +24,7 @@ function toggleObjectPropertyButtons() {
     objectProperties.css('font-size', 7);
     objectProperties.click(function () {
         if ($(this).hasClass('objectPropertyTracked')) {
-            $(this).removeClass('objectPropertyTracked');
+            $(this).removeClass('objectPropertyTracked teal');
         }
         else {
             $(this).addClass('objectPropertyTracked teal');
