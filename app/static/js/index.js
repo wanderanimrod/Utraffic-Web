@@ -32,12 +32,24 @@ function toggleObjectPropertyButtons() {
     });
 }
 
-function assignObjectIds() {
-    $('.visPlaceHolder').each(function() {
+function assignVisPlaceholderIds() {
+    $('.visPlaceHolder').each(function () {
         var visId = getNextVisId();
         $(this).attr('id', visId);
         visualisations.push(new Visualisation(visId));
     });
+}
+
+function assignIdsToAddVisSigns() {
+    $('.addVisSign').each(function() {
+        var parentVisPlaceholderId = $(this).closest('.visPlaceHolder').attr('id');
+        $(this).attr('id', parentVisPlaceholderId);
+    })
+}
+
+function assignObjectIds() {
+    assignVisPlaceholderIds();
+    assignIdsToAddVisSigns();
 }
 
 prepareGraphCanvas();
