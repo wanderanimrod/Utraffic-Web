@@ -34,12 +34,12 @@ function toggleObjectPropertyButtons() {
 
 function activateAddVisSigns() {
     $('.addVisSign').click(function() {
-        $(this).closest('.visPlaceHolder').css('z-index', -1);
+        $(this).closest('.visPlaceholder').css('z-index', -2);
     })
 }
 
 function assignVisPlaceholderIds() {
-    $('.visPlaceHolder').each(function () {
+    $('.visPlaceholder').each(function () {
         var visId = getNextVisId();
         $(this).attr('id', visId);
         visualisations.push(new Visualisation(visId));

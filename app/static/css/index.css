@@ -1,11 +1,23 @@
 .vis {
     background-color: gainsboro;
 }
-.visPlaceHolder {
-    background-color: teal;
-    opacity: 0.8;
+.closeVis:hover {
+    color: maroon;
+    cursor: pointer;
 }
-.vis, .visPlaceHolder {
+.maximiseVis:hover {
+    color: green;
+    cursor: pointer;
+}
+.visData:hover {
+    color: blueviolet;
+    cursor: pointer;
+}
+.visPlaceholder {
+    background-color: teal;
+    z-index: -1;
+}
+.vis, .visPlaceholder {
     height: 320px;
     position: absolute;
     left: 0;
