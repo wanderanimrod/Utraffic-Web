@@ -32,9 +32,18 @@ function toggleObjectPropertyButtons() {
     });
 }
 
+$('.showsOnlyOnVis').css('display', 'none');
+$('.visControls').css('padding', '.25em .5em');
+
+function findRelatedElementOfType(type, referenceElement) {
+    return $("#" + referenceElement.attr('id') + "." + type);
+}
+
 function activateAddVisSigns() {
     $('.addVisSign').click(function() {
-        $(this).closest('.visPlaceholder').css('z-index', -2);
+        $(this).css('display', 'none');
+        findRelatedElementOfType("showsOnlyOnVis", $(this)).css('display', '');
+        $(this).closest('.vis').css('background-color', 'gainsboro');
     })
 }
 
@@ -53,7 +62,7 @@ function copyVisIdsToAllDescendants() {
 }
 
 function propagateVisIdToAllDescendants(object) {
-    objectId = object.attr('id');
+    var objectId = object.attr('id');
     object.children().each(function() {
         $(this).attr('id', objectId);
         propagateVisIdToAllDescendants($(this));
