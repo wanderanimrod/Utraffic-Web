@@ -32,6 +32,12 @@ function toggleObjectPropertyButtons() {
     });
 }
 
+function activateAddVisSigns() {
+    $('.addVisSign').click(function() {
+        $(this).closest('.visPlaceHolder').css('z-index', -1);
+    })
+}
+
 function assignVisPlaceholderIds() {
     $('.visPlaceHolder').each(function () {
         var visId = getNextVisId();
@@ -40,18 +46,11 @@ function assignVisPlaceholderIds() {
     });
 }
 
-function assignIdsToAddVisSigns() {
-    $('.addVisSign').each(function() {
-        var parentVisPlaceholderId = $(this).closest('.visPlaceHolder').attr('id');
-        $(this).attr('id', parentVisPlaceholderId);
-    })
-}
-
 function assignObjectIds() {
     assignVisPlaceholderIds();
-    assignIdsToAddVisSigns();
 }
 
 prepareGraphCanvas();
 assignObjectIds();
+activateAddVisSigns();
 toggleObjectPropertyButtons();
