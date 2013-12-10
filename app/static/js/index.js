@@ -38,16 +38,31 @@ function activateAddVisSigns() {
     })
 }
 
-function assignVisPlaceholderIds() {
-    $('.visPlaceholder').each(function () {
+function assignVisIds() {
+    $('.vis').each(function () {
         var visId = getNextVisId();
         $(this).attr('id', visId);
         visualisations.push(new Visualisation(visId));
     });
 }
 
+function copyVisIdsToAllDescendants() {
+    $('.vis').each(function() {
+        propagateVisIdToAllDescendants($(this));
+    })
+}
+
+function propagateVisIdToAllDescendants(object) {
+    objectId = object.attr('id');
+    object.children().each(function() {
+        $(this).attr('id', objectId);
+        propagateVisIdToAllDescendants($(this));
+    })
+}
+
 function assignObjectIds() {
-    assignVisPlaceholderIds();
+    assignVisIds();
+    copyVisIdsToAllDescendants();
 }
 
 prepareGraphCanvas();

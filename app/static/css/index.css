@@ -2,15 +2,15 @@
     background-color: gainsboro;
 }
 .closeVis:hover {
-    color: maroon;
+    color: red;
     cursor: pointer;
 }
 .maximiseVis:hover {
-    color: green;
+    color: teal;
     cursor: pointer;
 }
 .visData:hover {
-    color: blueviolet;
+    color: teal;
     cursor: pointer;
 }
 .visPlaceholder {
@@ -27,16 +27,15 @@
 .visPane {
     position: relative;
 }
+
 .addVisSign {
-    color: whitesmoke;
+    color: teal;
+    opacity: 0.8;
 }
 .addVisSign:hover {
     cursor: pointer;
+    opacity: 1;
 }
-.addVisSign:active {
-    color: yellow;
-}
-
 .objectProperty {
     visibility: hidden;
 }
