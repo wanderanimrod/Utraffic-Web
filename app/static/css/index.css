@@ -14,7 +14,7 @@
     cursor: pointer;
 }
 .vis.back {
-    background-color: teal;
+    background-color: gainsboro;
     z-index: -1;
 }
 .vis {

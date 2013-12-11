@@ -54,9 +54,20 @@ function activateRemoveVisIcons() {
     })
 }
 
+function activateVisDataIcons() {
+    $('.visData').click(function() {
+        relativesOfType('.vis.front', $(this)).css('z-index', -1);
+        relativesOfType('.vis.back', $(this)).css('z-index', 1);
+    })
+}
+
 function assignVisIds() {
     $('.vis').each(function () {
-        var visId = getNextVisId();
+        var visId;
+        if($(this).hasClass('front'))
+            visId = getNextVisId();
+        else if($(this).hasClass('back'))
+            visId = getMaxVisId();
         $(this).attr('id', visId);
         visualisations.push(new Visualisation(visId));
     });
@@ -84,6 +95,7 @@ function assignObjectIds() {
 function activateClickables() {
     activateAddVisSigns();
     activateRemoveVisIcons();
+    activateVisDataIcons();
 }
 
 prepareGraphCanvas();

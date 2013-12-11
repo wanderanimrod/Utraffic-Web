@@ -1,12 +1,16 @@
 var visualisations = [];
 
 function getNextVisId() {
+    return getMaxVisId() + 1;
+}
+
+function getMaxVisId() {
     var maxId = -1;
     for(var i=0; i < visualisations.length; i++) {
         var currentId = visualisations[i].id;
         if(currentId > maxId) maxId = currentId;
     }
-    return maxId + 1;
+    return maxId;
 }
 
 function createSeries() {
