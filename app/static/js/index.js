@@ -4,7 +4,6 @@ function prepareGraphCanvas() {
     visRows.css('height', graphCanvas.height() / 2);
     var visPanes = $('.visPane');
     visPanes.css('height', visRows.height() - 27);
-
 }
 
 function toggleObjectPropertyButtons() {
@@ -35,15 +34,23 @@ function toggleObjectPropertyButtons() {
 $('.showsOnlyOnVis').css('display', 'none');
 $('.visControls').css('padding', '.25em .5em');
 
-function findRelatedElementOfType(type, referenceElement) {
+function relativesOfType(type, referenceElement) {
     return $("#" + referenceElement.attr('id') + "." + type);
 }
 
 function activateAddVisSigns() {
     $('.addVisSign').click(function() {
         $(this).css('display', 'none');
-        findRelatedElementOfType("showsOnlyOnVis", $(this)).css('display', '');
-        $(this).closest('.vis').css('background-color', 'gainsboro');
+        relativesOfType("vis", $(this)).css('background-image', 'url("/static/images/grey.png")');
+        relativesOfType("showsOnlyOnVis", $(this)).css('display', '');
+    })
+}
+
+function activateRemoveVisIcons() {
+    $('.removeVis').click(function() {
+        relativesOfType("showsOnlyOnVis", $(this)).css('display', 'none');
+        relativesOfType("vis", $(this)).css('background-image', '');
+        relativesOfType('addVisSign', $(this)).css('display', '');
     })
 }
 
@@ -74,7 +81,12 @@ function assignObjectIds() {
     copyVisIdsToAllDescendants();
 }
 
+function activateClickables() {
+    activateAddVisSigns();
+    activateRemoveVisIcons();
+}
+
 prepareGraphCanvas();
 assignObjectIds();
-activateAddVisSigns();
+activateClickables();
 toggleObjectPropertyButtons();

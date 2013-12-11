@@ -1,7 +1,7 @@
 .vis {
     background-color: whitesmoke;
 }
-.closeVis:hover {
+.removeVis:hover {
     color: red;
     cursor: pointer;
 }
