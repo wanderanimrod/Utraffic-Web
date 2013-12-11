@@ -1,4 +1,4 @@
-.vis {
+.vis.front {
     background-color: whitesmoke;
 }
 .removeVis:hover {
@@ -13,11 +13,11 @@
     color: teal;
     cursor: pointer;
 }
-.visPlaceholder {
+.vis.back {
     background-color: teal;
     z-index: -1;
 }
-.vis, .visPlaceholder {
+.vis {
     height: 320px;
     position: absolute;
     left: 0;
@@ -26,6 +26,8 @@
 }
 .visPane {
     position: relative;
+    transform-style: preserve-3d;
+    transition: all 0.5s linear;
 }
 
 .addVisSign {

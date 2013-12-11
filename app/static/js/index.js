@@ -35,22 +35,22 @@ $('.showsOnlyOnVis').css('display', 'none');
 $('.visControls').css('padding', '.25em .5em');
 
 function relativesOfType(type, referenceElement) {
-    return $("#" + referenceElement.attr('id') + "." + type);
+    return $("#" + referenceElement.attr('id') + type);
 }
 
 function activateAddVisSigns() {
     $('.addVisSign').click(function() {
         $(this).css('display', 'none');
-        relativesOfType("vis", $(this)).css('background-image', 'url("/static/images/grey.png")');
-        relativesOfType("showsOnlyOnVis", $(this)).css('display', '');
+        relativesOfType(".vis.front", $(this)).css('background-image', 'url("/static/images/grey.png")');
+        relativesOfType(".showsOnlyOnVis", $(this)).css('display', '');
     })
 }
 
 function activateRemoveVisIcons() {
     $('.removeVis').click(function() {
-        relativesOfType("showsOnlyOnVis", $(this)).css('display', 'none');
-        relativesOfType("vis", $(this)).css('background-image', '');
-        relativesOfType('addVisSign', $(this)).css('display', '');
+        relativesOfType(".showsOnlyOnVis", $(this)).css('display', 'none');
+        relativesOfType(".vis.front", $(this)).css('background-image', '');
+        relativesOfType('.addVisSign', $(this)).css('display', '');
     })
 }
 
