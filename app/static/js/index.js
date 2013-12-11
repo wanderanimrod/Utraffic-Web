@@ -32,7 +32,7 @@ function toggleObjectPropertyButtons() {
 }
 
 $('.showsOnlyOnVis').css('display', 'none');
-$('.visControls').css('padding', '.25em .5em');
+$('.visPaneControls').css('padding', '.25em .5em');
 
 function relativesOfType(type, referenceElement) {
     return $("#" + referenceElement.attr('id') + type);
@@ -58,6 +58,13 @@ function activateVisDataIcons() {
     $('.visData').click(function() {
         relativesOfType('.vis.front', $(this)).css('z-index', -1);
         relativesOfType('.vis.back', $(this)).css('z-index', 1);
+    })
+}
+
+function activateBackToVisIcons() {
+    $('.backToVis').click(function() {
+        relativesOfType('.vis.back', $(this)).css('z-index', -1);
+        relativesOfType('.vis.front', $(this)).css('z-index', 1);
     })
 }
 
@@ -96,6 +103,7 @@ function activateClickables() {
     activateAddVisSigns();
     activateRemoveVisIcons();
     activateVisDataIcons();
+    activateBackToVisIcons();
 }
 
 prepareGraphCanvas();

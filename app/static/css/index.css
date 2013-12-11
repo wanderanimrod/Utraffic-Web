@@ -5,6 +5,10 @@
     color: red;
     cursor: pointer;
 }
+.backToVis:hover {
+    color: teal;
+    cursor: pointer;
+}
 .maximiseVis:hover {
     color: teal;
     cursor: pointer;
