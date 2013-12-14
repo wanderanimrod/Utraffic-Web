@@ -22,6 +22,11 @@ function toggleObjectPropertyButtons() {
     var objectProperties = $('.objectProperty');
     objectProperties.css('font-size', 7);
     objectProperties.click(function () {
+        if(activeVisualisation === undefined) {
+            showErrorMessage("No active visualisation to add property series to.");
+            console.log(activeVisualisation);
+            return;
+        }
         if ($(this).hasClass('objectPropertyTracked')) {
             $(this).removeClass('objectPropertyTracked teal');
         }
@@ -68,6 +73,12 @@ function activateBackToVisIcons() {
     })
 }
 
+function activateAddSeriesIcons() {
+    $('.addSeries').click(function() {
+        activeVisualisation = getVisualisation($(this).attr('id'));
+    })
+}
+
 function assignVisIds() {
     $('.vis').each(function () {
         var visId;
@@ -104,6 +115,7 @@ function activateClickables() {
     activateRemoveVisIcons();
     activateVisDataIcons();
     activateBackToVisIcons();
+    activateAddSeriesIcons();
 }
 
 prepareGraphCanvas();

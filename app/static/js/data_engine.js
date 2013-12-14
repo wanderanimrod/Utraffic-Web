@@ -1,4 +1,5 @@
 var visualisations = [];
+var activeVisualisation;
 
 function getNextVisId() {
     return getMaxVisId() + 1;
@@ -11,6 +12,16 @@ function getMaxVisId() {
         if(currentId > maxId) maxId = currentId;
     }
     return maxId;
+}
+
+function getVisualisation(visId) {
+    var visualisation;
+    for(var i=0; i < visualisations.length; i++) {
+        visualisation = visualisations[i];
+        if(visualisation.id = visId)
+            return visualisation;
+    }
+    return visualisation;
 }
 
 function createSeries() {

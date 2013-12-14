@@ -31,6 +31,14 @@
 .visPane {
     position: relative;
 }
+.visKeyItem, .addSeries {
+    display: inline-block;
+    padding-right: 10px;
+}
+.addSeries:hover {
+    cursor: pointer;
+    color: teal;
+}
 
 .addVisSign {
     color: teal;
