@@ -32,4 +32,8 @@ function Session() {
     this.hasActiveVisualisation = function() {
         return this.activeVisualisation != undefined;
     };
+
+    this.getActiveVisualisation = function() {
+        return this.activeVisualisation;
+    }
 }

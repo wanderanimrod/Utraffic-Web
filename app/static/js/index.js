@@ -26,6 +26,7 @@ function enableTrackingOfObjectProperties() {
     var objectProperties = $('.objectProperty');
     objectProperties.css('font-size', 7);
     objectProperties.click(function () {
+        var visualisation = session.getActiveVisualisation();
         if (!session.hasActiveVisualisation()) {
             showErrorMessage("No active visualisation to add property series to.");
             return;
@@ -35,6 +36,7 @@ function enableTrackingOfObjectProperties() {
         }
         else {
             $(this).addClass('objectPropertyTracked teal');
+            visualisation.addSeries(addSeriesToVisualisation);
         }
     });
 }
@@ -49,6 +51,10 @@ $('.visPaneControls').css('padding', '.25em .5em');
 
 function relativesOfType(type, referenceElement) {
     return $("#" + referenceElement.attr('id') + type);
+}
+
+function visElementsOfType(visId, type) {
+    return $("#" + visId + type);
 }
 
 function activateAddVisSigns() {
@@ -81,17 +87,22 @@ function activateBackToVisIcons() {
     })
 }
 
+function addSeriesToVisualisation(visualisation, series) {
+    var visKeyElement = visElementsOfType(visualisation.id, '.ui.bottom.attached.label');
+    visKeyElement.append('<div style="display: inline">Series</div>');
+}
+
 function activateAddSeriesIcons() {
     $('.addSeries').click(function () {
         var visualisation = session.getVisualisation($(this).attr('id'));
         if (visualisation.state === visualisationState.IDLE)
-            onAddSeries(visualisation, $(this));
+            startAddingSeries(visualisation, $(this));
         else if (visualisation.state === visualisationState.ADDING_SERIES)
-            onFinishAddingSeries(visualisation, $(this));
+            finishAddingSeries(visualisation, $(this));
     })
 }
 
-function onAddSeries(visualisation, addSeriesUiElement) {
+function startAddingSeries(visualisation, addSeriesUiElement) {
     visualisation.activate();
     visualisation.state = visualisationState.ADDING_SERIES;
     addSeriesUiElement.closest('.ui.bottom.attached.label').css('background-color', 'lightyellow');
@@ -101,7 +112,7 @@ function onAddSeries(visualisation, addSeriesUiElement) {
         .css('color', 'darkgreen');
 }
 
-function onFinishAddingSeries(visualisation, addSeriesUiElement) {
+function finishAddingSeries(visualisation, addSeriesUiElement) {
     addSeriesUiElement.closest('.ui.bottom.attached.label').css('background-color', '');
     addSeriesUiElement.children('.checkmark.icon')
         .removeClass('large checkmark')
