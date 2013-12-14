@@ -1,3 +1,5 @@
+var session = new Session();
+
 function prepareGraphCanvas() {
     var graphCanvas = $("#graphingArea");
     var visRows = $('.visRow');
@@ -6,7 +8,7 @@ function prepareGraphCanvas() {
     visPanes.css('height', visRows.height() - 27);
 }
 
-function toggleObjectPropertyButtons() {
+function showUntrackedObjectPropertiesOnHover() {
     var simObjects = $('.simObject');
     simObjects.hover(function () {
         $(this).children('.objectProperty').css('visibility', 'visible');
@@ -18,13 +20,14 @@ function toggleObjectPropertyButtons() {
             }
         });
     });
+}
 
+function enableTrackingOfObjectProperties() {
     var objectProperties = $('.objectProperty');
     objectProperties.css('font-size', 7);
     objectProperties.click(function () {
-        if (activeVisualisation === undefined) {
+        if (!session.hasActiveVisualisation()) {
             showErrorMessage("No active visualisation to add property series to.");
-            console.log(activeVisualisation);
             return;
         }
         if ($(this).hasClass('objectPropertyTracked')) {
@@ -34,6 +37,11 @@ function toggleObjectPropertyButtons() {
             $(this).addClass('objectPropertyTracked teal');
         }
     });
+}
+
+function toggleObjectPropertyButtons() {
+    showUntrackedObjectPropertiesOnHover();
+    enableTrackingOfObjectProperties();
 }
 
 $('.showsOnlyOnVis').css('display', 'none');
@@ -75,10 +83,10 @@ function activateBackToVisIcons() {
 
 function activateAddSeriesIcons() {
     $('.addSeries').click(function () {
-        var visualisation = getVisualisation($(this).attr('id'));
+        var visualisation = session.getVisualisation($(this).attr('id'));
         if (visualisation.state === visualisationState.IDLE)
             onAddSeries(visualisation, $(this));
-        else if(visualisation.state === visualisationState.ADDING_SERIES)
+        else if (visualisation.state === visualisationState.ADDING_SERIES)
             onFinishAddingSeries(visualisation, $(this));
     })
 }
@@ -106,11 +114,11 @@ function assignVisIds() {
     $('.vis').each(function () {
         var visId;
         if ($(this).hasClass('front'))
-            visId = getNextVisId();
+            visId = session.getNextVisId();
         else if ($(this).hasClass('back'))
-            visId = getMaxVisId();
+            visId = session.getMaxVisId();
         $(this).attr('id', visId);
-        visualisations.push(new Visualisation(visId));
+        session.addNewVisualisation(new Visualisation(visId));
     });
 }
 
@@ -141,7 +149,9 @@ function activateClickables() {
     activateAddSeriesIcons();
 }
 
-prepareGraphCanvas();
-assignObjectIds();
-activateClickables();
-toggleObjectPropertyButtons();
+$(document).ready(function () {
+    prepareGraphCanvas();
+    assignObjectIds();
+    activateClickables();
+    toggleObjectPropertyButtons();
+});

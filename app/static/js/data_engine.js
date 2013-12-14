@@ -1,41 +1,35 @@
-var visualisations = [];
-var activeVisualisation;
+function Session() {
+    var visualisations = [];
+    var activeVisualisation = undefined;
 
-function getNextVisId() {
-    return getMaxVisId() + 1;
-}
-
-function getMaxVisId() {
-    var maxId = -1;
-    for(var i=0; i < visualisations.length; i++) {
-        var currentId = visualisations[i].id;
-        if(currentId > maxId) maxId = currentId;
-    }
-    return maxId;
-}
-
-function getVisualisation(visId) {
-    var visualisation;
-    for(var i=0; i < visualisations.length; i++) {
-        visualisation = visualisations[i];
-        if(visualisation.id = visId)
-            return visualisation;
-    }
-    return visualisation;
-}
-
-function createSeries() {
-    var request = new XMLHttpRequest();
-    request.open("POST", "http://127.0.0.1:5000/series/?debug=true", true);
-    request.onreadystatechange = function() {
-        if (request.readyState == 4 && request.status == 201) {
-            var responseJson = JSON.parse(request.responseText);
-            var series = new Series(responseJson);
-            console.log(series);
-            return series;
-        }
+    this.addNewVisualisation = function(visualisation) {
+        visualisations.push(visualisation);
     };
-    request.send();
-}
 
-createSeries();
+    this.getNextVisId = function() {
+        return this.getMaxVisId() + 1;
+    };
+
+    this.getMaxVisId = function() {
+        var maxId = -1;
+        for (var i = 0; i < visualisations.length; i++) {
+            var currentId = visualisations[i].id;
+            if (currentId > maxId) maxId = currentId;
+        }
+        return maxId;
+    };
+
+    this.getVisualisation = function(visId) {
+        var visualisation;
+        for (var i = 0; i < visualisations.length; i++) {
+            visualisation = visualisations[i];
+            if (visualisation.id = visId)
+                return visualisation;
+        }
+        return visualisation;
+    };
+
+    this.hasActiveVisualisation = function() {
+        return this.activeVisualisation != undefined;
+    };
+}
