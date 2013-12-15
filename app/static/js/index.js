@@ -89,7 +89,8 @@ function activateBackToVisIcons() {
 
 function addSeriesToVisualisation(visualisation, series) {
     var visKeyElement = visElementsOfType(visualisation.id, '.ui.bottom.attached.label');
-    visKeyElement.append('<div style="display: inline">Series</div>');
+    insertVisKeyItem(series, visKeyElement);
+
 }
 
 function activateAddSeriesIcons() {
