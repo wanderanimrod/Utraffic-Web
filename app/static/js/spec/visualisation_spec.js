@@ -6,4 +6,12 @@ describe("Visualisation", function() {
             expect(visualisation.series[0]).toEqual(series);
         });
     });
+
+    it("should assign a color to any series added", function(done) {
+        var visualisation = new Visualisation(10);
+        visualisation.addSeries().then(function(series) {
+            done();
+            expect(series.color).toNotBe(undefined);
+        })
+    })
 });

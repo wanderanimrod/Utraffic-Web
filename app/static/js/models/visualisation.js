@@ -12,6 +12,7 @@ var Visualisation = function(id) {
     self.addSeries = function() {
         return new RSVP.Promise(function(resolve, reject) {
             createSeries().then(function(series) {
+                series.color = self.getNextSeriesColor();
                 self.series.push(series);
                 resolve(series);
             }, function(error) {
