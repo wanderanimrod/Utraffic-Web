@@ -1,13 +1,15 @@
 var Visualisation = function(id) {
     var self = this;
-    this.id = id;
-    this.state = visualisationState.IDLE;
-    this.activate = function() {
+
+    self.id = id;
+    self.series = [];
+    self.state = visualisationState.IDLE;
+
+    self.activate = function() {
         session.activeVisualisation = this;
     };
-    this.series = [];
 
-    this.addSeries = function() {
+    self.addSeries = function() {
         return new RSVP.Promise(function(resolve, reject) {
             createSeries().then(function(series) {
                 self.series.push(series);
@@ -16,21 +18,14 @@ var Visualisation = function(id) {
                 reject(error);
             });
         });
-
     };
 
-    this.seriesColors = d3.scale.category10();
-    this.maxColorIndex = -1;
-    this.getNextSeriesColor = function() {
-        this.maxColorIndex += 1;
-        return this.seriesColors(this.maxColorIndex);
+    self.maxColorIndex = -1;
+    self.seriesColors = d3.scale.category10();
+    self.getNextSeriesColor = function() {
+        self.maxColorIndex += 1;
+        return self.seriesColors(self.maxColorIndex);
     };
-
-//    var onSeriesCreated = (function (series, onSeriesAdded) {
-//        series.color = this.getNextSeriesColor();
-//        this.series.push(series);
-//        onSeriesAdded(this, series);
-//    }).bind(this);
 };
 
 var visualisationState = {
