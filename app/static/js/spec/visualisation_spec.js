@@ -7,11 +7,32 @@ describe("Visualisation", function() {
         });
     });
 
-    it("should assign a color to any series added", function(done) {
-        var visualisation = new Visualisation(10);
-        visualisation.addSeries().then(function(series) {
+    it("should assign a colour to any series added", function(done) {
+        makeVisualisationWithOneSeries().then(function(visualisation) {
             done();
-            expect(series.color).toNotBe(undefined);
-        })
-    })
+            expect(visualisation.series[0].colour).toNotBe(undefined);
+        });
+    });
+
+    it("should assign different colours to different series added", function(done) {
+        makeVisualisationWithOneSeries().then(function(visualisation) {
+            visualisation.addSeries().then(function(series2) {
+                done();
+                var series1 = visualisation.series[0];
+                expect(series1.colour).toNotEqual(series2.colour);
+            })
+
+        });
+    });
 });
+
+function makeVisualisationWithOneSeries() {
+    var visualisation = new Visualisation(10);
+    return new RSVP.Promise(function(resolve, reject) {
+        visualisation.addSeries().then(function() {
+            resolve(visualisation);
+        }, function(error) {
+            reject(Error(error))
+        });
+    });
+}
