@@ -1,4 +1,5 @@
 var Visualisation = function(id) {
+    var self = this;
     this.id = id;
     this.state = visualisationState.IDLE;
     this.activate = function() {
@@ -6,8 +7,16 @@ var Visualisation = function(id) {
     };
     this.series = [];
 
-    this.addSeries = function(onSeriesAdded) {
-        createSeries().then(addSeriesToVis);
+    this.addSeries = function() {
+        return new RSVP.Promise(function(resolve, reject) {
+            createSeries().then(function(series) {
+                self.series.push(series);
+                resolve(series);
+            }, function(error) {
+                reject(error);
+            });
+        });
+
     };
 
     this.seriesColors = d3.scale.category10();
