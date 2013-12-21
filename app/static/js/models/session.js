@@ -2,7 +2,7 @@ function Session() {
 
     var self = this;
     self.visualisations = [];
-    self.activeVisualisation = undefined;
+    self.activeVisualisation = null;
 
     self.addNewVisualisation = function() {
         var visualisation = new Visualisation(self.getNextVisId());
@@ -33,6 +33,10 @@ function Session() {
                 return visualisation;
         }
         return visualisation;
+    };
+
+    self.hasActiveVisualisation = function() {
+        return self.activeVisualisation !== null;
     };
 
     function windowSessionOrMe() {

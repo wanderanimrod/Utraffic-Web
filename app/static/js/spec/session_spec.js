@@ -1,13 +1,13 @@
 describe("Session", function() {
 
     var session;
-
     beforeEach(function() {
         session = new Session();
     });
 
     afterEach(function() {
-       session.visualisations = [];
+        session.visualisations = [];
+        session.activeVisualisation = null;
     });
 
     it("should add visualisation to itself", function() {
@@ -29,8 +29,15 @@ describe("Session", function() {
         expect(returnedVisualisation).toBe(visualisation);
     });
 
+    it("should know if it has an active visualisation or not", function() {
+        expect(session.hasActiveVisualisation()).toBe(false);
+        var visualisation = session.addNewVisualisation();
+        visualisation.activate();
+        expect(session.hasActiveVisualisation()).toBe(true);
+    });
+
     it("should only be one instance, i.e. Monotone", function() {
         var session2 = new Session();
         expect(session2).toEqual(session);
-    })
+    });
 });
