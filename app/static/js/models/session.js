@@ -3,16 +3,19 @@ function Session() {
     self.visualisations = [];
     self.activeVisualisation = undefined;
 
-    this.addNewVisualisation = function(visualisation) {
-        visualisations.push(visualisation);
+    this.addNewVisualisation = function() {
+        var visualisation = new Visualisation(self.getNextVisId());
+        self.visualisations.push(visualisation);
+        return visualisation;
     };
 
-    this.getNextVisId = function() {
-        return this.getMaxVisId() + 1;
+    self.getNextVisId = function() {
+        return self.getMaxVisId() + 1;
     };
 
-    this.getMaxVisId = function() {
+    self.getMaxVisId = function() {
         var maxId = -1;
+        var visualisations = self.visualisations;
         for (var i = 0; i < visualisations.length; i++) {
             var currentId = visualisations[i].id;
             if (currentId > maxId) maxId = currentId;
@@ -22,6 +25,7 @@ function Session() {
 
     this.getVisualisation = function(visId) {
         var visualisation;
+        var visualisations = self.visualisations;
         for (var i = 0; i < visualisations.length; i++) {
             visualisation = visualisations[i];
             if (visualisation.id = visId)

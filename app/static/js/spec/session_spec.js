@@ -8,6 +8,12 @@ describe("Session", function() {
         var session = createSession();
         expect(session.activeVisualisation).toBe(undefined);
     });
+
+    it("should add visualisation to itself", function() {
+        var session = createSession();
+        var visualisation = session.addNewVisualisation();
+        expect(session.getVisualisation(visualisation.id))
+    });
 });
 
 function createSession() {
