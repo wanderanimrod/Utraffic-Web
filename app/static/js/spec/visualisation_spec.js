@@ -10,7 +10,7 @@ describe("Visualisation", function() {
     it("should assign a colour to any series added", function(done) {
         makeVisualisationWithOneSeries().then(function(visualisation) {
             done();
-            expect(visualisation.series[0].colour).toNotBe(undefined);
+            expect(visualisation.series[0].colour).not.toBe(undefined);
         });
     });
 
@@ -19,11 +19,23 @@ describe("Visualisation", function() {
             visualisation.addSeries().then(function(series2) {
                 done();
                 var series1 = visualisation.series[0];
-                expect(series1.colour).toNotEqual(series2.colour);
-            })
-
+                expect(series1.colour).not.toEqual(series2.colour);
+            });
         });
     });
+});
+
+describe("Visualisations", function() {
+   it("should have independent series addition processes", function(done){
+       makeVisualisationWithOneSeries().then(function(visualisation1){
+           makeVisualisationWithOneSeries().then(function(visualisation2){
+               done();
+               expect(visualisation1.series.length).toBe(1);
+               expect(visualisation2.series.length).toBe(1);
+               expect(visualisation1.series[0].colour).toEqual(visualisation2.series[0].colour);
+           });
+       });
+   })
 });
 
 function makeVisualisationWithOneSeries() {
