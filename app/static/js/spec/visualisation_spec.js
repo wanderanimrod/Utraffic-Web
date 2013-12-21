@@ -1,4 +1,9 @@
 describe("Visualisation", function() {
+    it("should have and idle state when it is created", function() {
+        var visualisation = new Visualisation(10);
+        expect(visualisation.state).toBe(visualisationState.IDLE);
+    });
+
     it("should add series to itself", function(done) {
         var visualisation = new Visualisation(10);
         visualisation.addSeries().then(function(series) {
@@ -26,16 +31,16 @@ describe("Visualisation", function() {
 });
 
 describe("Visualisations", function() {
-   it("should have independent series addition processes", function(done){
-       makeVisualisationWithOneSeries().then(function(visualisation1){
-           makeVisualisationWithOneSeries().then(function(visualisation2){
-               done();
-               expect(visualisation1.series.length).toBe(1);
-               expect(visualisation2.series.length).toBe(1);
-               expect(visualisation1.series[0].colour).toEqual(visualisation2.series[0].colour);
-           });
-       });
-   });
+    it("should have independent series addition processes", function(done) {
+        makeVisualisationWithOneSeries().then(function(visualisation1) {
+            makeVisualisationWithOneSeries().then(function(visualisation2) {
+                done();
+                expect(visualisation1.series.length).toBe(1);
+                expect(visualisation2.series.length).toBe(1);
+                expect(visualisation1.series[0].colour).toEqual(visualisation2.series[0].colour);
+            });
+        });
+    });
 });
 
 function makeVisualisationWithOneSeries() {
