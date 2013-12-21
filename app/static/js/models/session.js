@@ -1,5 +1,6 @@
 function Session() {
-    var visualisations = [];
+    var self = this;
+    self.visualisations = [];
     var activeVisualisation = undefined;
 
     this.addNewVisualisation = function(visualisation) {
