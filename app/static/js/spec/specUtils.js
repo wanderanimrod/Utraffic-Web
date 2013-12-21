@@ -1,4 +1,7 @@
 (function() {
+
+    jasmine.getEnv().defaultTimeoutInterval = 500;
+
     var withoutAsync = {};
 
     ["it", "beforeEach", "afterEach"].forEach(function(jasmineFunction) {

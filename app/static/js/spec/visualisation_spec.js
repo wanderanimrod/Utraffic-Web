@@ -35,7 +35,7 @@ describe("Visualisations", function() {
                expect(visualisation1.series[0].colour).toEqual(visualisation2.series[0].colour);
            });
        });
-   })
+   });
 });
 
 function makeVisualisationWithOneSeries() {
