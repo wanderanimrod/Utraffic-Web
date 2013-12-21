@@ -9,7 +9,6 @@ class PhantomJasmineRunner
     @tries = 0
     @max_tries = 10
   
-  #console_reporter = new jasmine.ConsoleReporter()
   get_status: -> @page.evaluate(-> console_reporter.status)
 
   terminate: ->

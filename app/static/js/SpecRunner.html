@@ -33,7 +33,7 @@
             jasmineEnv.addReporter(htmlReporter);
 
             //phantom-jasmine console reporter
-            var console_reporter = new jasmine.ConsoleReporter();
+            window.console_reporter = new jasmine.ConsoleReporter();
             jasmine.getEnv().addReporter(console_reporter);
 
             jasmineEnv.specFilter = function (spec) {
