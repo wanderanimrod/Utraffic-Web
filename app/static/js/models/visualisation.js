@@ -6,7 +6,7 @@ var Visualisation = function(id) {
     self.state = visualisationState.IDLE;
 
     self.activate = function() {
-        session.activeVisualisation = this;
+        session.activeVisualisation = self;
     };
 
     self.addSeries = function() {

@@ -35,9 +35,17 @@ function Session() {
         return visualisation;
     };
 
-    if(window.session === undefined) {
-        window.session = self;
-        return self;
+    function windowSessionOrMe() {
+        if(window.session === undefined) {
+            window.session = self;
+            return self;
+        }
+        else return window.session;
     }
-    else return window.session;
+
+    window.getSession = function() {
+        return windowSessionOrMe();
+    };
+
+    return windowSessionOrMe();
 }

@@ -1,11 +1,16 @@
 describe("Visualisation", function() {
+
+    var visualisation;
+
+    beforeEach(function() {
+        visualisation = new Visualisation(10);
+    });
+
     it("should have and idle state when it is created", function() {
-        var visualisation = new Visualisation(10);
         expect(visualisation.state).toBe(visualisationState.IDLE);
     });
 
     it("should add series to itself", function(done) {
-        var visualisation = new Visualisation(10);
         visualisation.addSeries().then(function(series) {
             done();
             expect(visualisation.series[0]).toEqual(series);
@@ -27,6 +32,12 @@ describe("Visualisation", function() {
                 expect(series1.colour).not.toEqual(series2.colour);
             });
         });
+    });
+
+    it("should make itself the active visualisation of the session", function() {
+        var session = new Session();
+        visualisation.activate();
+        expect(session.activeVisualisation).toEqual(visualisation);
     });
 });
 

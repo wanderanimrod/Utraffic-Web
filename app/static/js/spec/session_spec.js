@@ -10,14 +10,6 @@ describe("Session", function() {
        session.visualisations = [];
     });
 
-    it("should have no visualisation upon instantiation", function() {
-        expect(session.visualisations).toEqual([]);
-    });
-
-    it("should have the activeVisualisation as undefined upon instantiation", function() {
-        expect(session.activeVisualisation).toBe(undefined);
-    });
-
     it("should add visualisation to itself", function() {
         var visualisation = session.addNewVisualisation();
         expect(session.getVisualisation(visualisation.id))
