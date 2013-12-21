@@ -6,6 +6,10 @@ describe("Session", function() {
         session = new Session();
     });
 
+    afterEach(function() {
+       session.visualisations = [];
+    });
+
     it("should have no visualisation upon instantiation", function() {
         expect(session.visualisations).toEqual([]);
     });
@@ -32,4 +36,9 @@ describe("Session", function() {
         var returnedVisualisation = session.getVisualisation(visualisation.id);
         expect(returnedVisualisation).toBe(visualisation);
     });
+
+    it("should only be one instance, i.e. Monotone", function() {
+        var session2 = new Session();
+        expect(session2).toEqual(session);
+    })
 });
