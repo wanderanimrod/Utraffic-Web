@@ -4,6 +4,7 @@
 git clone https://github.com/wanderanimrod/Utraffic-Client--Sim-Engine.git client-sim-engine
 virtualenv --no-site-packages client-sim-engine-virtualenv
 source client-sim-engine-virtualenv/bin/activate
+pip freeze
 pip install -r client-sim-engine/pip-requires.txt
 python client-sim-engine/app/app.py &
 
