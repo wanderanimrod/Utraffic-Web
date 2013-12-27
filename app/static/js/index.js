@@ -10,12 +10,12 @@ function prepareGraphCanvas() {
 
 function showUntrackedObjectPropertiesOnHover() {
     var simObjects = $('.simObject');
-    simObjects.hover(function () {
+    simObjects.hover(function() {
         $(this).children('.objectProperty').css('visibility', 'visible');
     });
-    simObjects.mouseleave(function () {
-        $(this).children('.objectProperty').each(function () {
-            if (!$(this).hasClass('objectPropertyTracked')) {
+    simObjects.mouseleave(function() {
+        $(this).children('.objectProperty').each(function() {
+            if(!$(this).hasClass('objectPropertyTracked')) {
                 $(this).css('visibility', 'hidden');
             }
         });
@@ -25,13 +25,13 @@ function showUntrackedObjectPropertiesOnHover() {
 function enableTrackingOfObjectProperties() {
     var objectProperties = $('.objectProperty');
     objectProperties.css('font-size', 7);
-    objectProperties.click(function () {
+    objectProperties.click(function() {
         var visualisation = session.activeVisualisation;
-        if (!session.hasActiveVisualisation()) {
+        if(!session.hasActiveVisualisation()) {
             showErrorMessage("No active visualisation to add property series to.");
             return;
         }
-        if ($(this).hasClass('objectPropertyTracked')) {
+        if($(this).hasClass('objectPropertyTracked')) {
             $(this).removeClass('objectPropertyTracked teal');
         }
         else {
@@ -62,7 +62,7 @@ function visElementsOfType(visId, type) {
 }
 
 function activateAddVisSigns() {
-    $('.addVisSign').click(function () {
+    $('.addVisSign').click(function() {
         $(this).css('display', 'none');
         relativesOfType(".vis.front", $(this)).css('background-image', 'url("/static/images/grey.png")');
         relativesOfType(".showsOnlyOnVis", $(this)).css('display', '');
@@ -70,7 +70,7 @@ function activateAddVisSigns() {
 }
 
 function activateRemoveVisIcons() {
-    $('.removeVis').click(function () {
+    $('.removeVis').click(function() {
         relativesOfType(".showsOnlyOnVis", $(this)).css('display', 'none');
         relativesOfType(".vis.front", $(this)).css('background-image', '');
         relativesOfType('.addVisSign', $(this)).css('display', '');
@@ -78,14 +78,14 @@ function activateRemoveVisIcons() {
 }
 
 function activateVisDataIcons() {
-    $('.visData').click(function () {
+    $('.visData').click(function() {
         relativesOfType('.vis.front', $(this)).css('z-index', -1);
         relativesOfType('.vis.back', $(this)).css('z-index', 1);
     })
 }
 
 function activateBackToVisIcons() {
-    $('.backToVis').click(function () {
+    $('.backToVis').click(function() {
         relativesOfType('.vis.back', $(this)).css('z-index', -1);
         relativesOfType('.vis.front', $(this)).css('z-index', 1);
     })
@@ -97,24 +97,24 @@ function addSeriesToVisualisation(visualisation, series) {
 }
 
 function activateAddSeriesIcons() {
-    $('.addSeries').click(function () {
+    $('.addSeries').click(function() {
         var visualisation = session.getVisualisation($(this).attr('id'));
         console.log("VISUALISATION SELECTED");
         console.log(visualisation);
-        if (visualisation.state === visualisationState.IDLE)
+        if(visualisation.state === visualisationState.IDLE)
             startAddingSeries(visualisation, $(this));
-        else if (visualisation.state === visualisationState.ADDING_SERIES)
+        else if(visualisation.state === visualisationState.ADDING_SERIES)
             finishAddingSeries(visualisation, $(this));
     });
 }
 
-function startAddingSeries(visualisation, addSeriesUiElement) {
+function startAddingSeries(visualisation, addSeriesElement) {
+    var prev = session.activeVisualisation;
     visualisation.activate();
-    console.log("ACTIVE VISUALISATION");
-    console.log(session.activeVisualisation);
+    var curr = session.activeVisualisation;
     visualisation.state = visualisationState.ADDING_SERIES;
-    addSeriesUiElement.closest('.ui.bottom.attached.label').css('background-color', 'lightyellow');
-    addSeriesUiElement.children('.plus.icon')
+    addSeriesElement.closest('.ui.bottom.attached.label').css('background-color', 'lightyellow');
+    addSeriesElement.children('.plus.icon')
         .removeClass('plus')
         .addClass('large checkmark')
         .css('color', 'darkgreen');
@@ -129,10 +129,10 @@ function finishAddingSeries(visualisation, addSeriesUiElement) {
     visualisation.state = visualisationState.IDLE;
 }
 
-function linkUiElementsToSessionVisualisations() {
+function createVisualisationObjectsForUiElements() {
     var visualisation = null;
-    $('.vis').each(function () {
-        if ($(this).hasClass('front')) {
+    $('.vis').each(function() {
+        if($(this).hasClass('front')) {
             visualisation = session.addNewVisualisation();
         }
         $(this).attr('id', visualisation.id);
@@ -140,22 +140,17 @@ function linkUiElementsToSessionVisualisations() {
 }
 
 function copyVisIdsToAllDescendants() {
-    $('.vis').each(function () {
+    $('.vis').each(function() {
         propagateVisIdToAllDescendants($(this));
     })
 }
 
 function propagateVisIdToAllDescendants(object) {
     var objectId = object.attr('id');
-    object.children().each(function () {
+    object.children().each(function() {
         $(this).attr('id', objectId);
         propagateVisIdToAllDescendants($(this));
     })
-}
-
-function assignObjectIds() {
-    linkUiElementsToSessionVisualisations();
-    copyVisIdsToAllDescendants();
 }
 
 function activateClickables() {
@@ -166,9 +161,10 @@ function activateClickables() {
     activateAddSeriesIcons();
 }
 
-$(document).ready(function () {
+$(document).ready(function() {
     prepareGraphCanvas();
-    assignObjectIds();
+    createVisualisationObjectsForUiElements();
+    copyVisIdsToAllDescendants();
     activateClickables();
     toggleObjectPropertyButtons();
 });
