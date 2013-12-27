@@ -14,7 +14,7 @@ function insertVisKeyItem(series, visKeyElement) {
     visKeyElement.append('<div style="display: inline; padding-right: 20px">' +
             '<div class="ui circular label" ' +
                 'style="margin-right: 5px; background-color:'
-                + series.color + '">' +
+                + series.colour + '">' +
             '</div>' + series.id
         + '</div>');
 }
