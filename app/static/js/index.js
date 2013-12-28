@@ -99,8 +99,6 @@ function addSeriesToVisualisation(visualisation, series) {
 function activateAddSeriesIcons() {
     $('.addSeries').click(function() {
         var visualisation = session.getVisualisation($(this).attr('id'));
-        console.log("VISUALISATION SELECTED");
-        console.log(visualisation);
         if(visualisation.state === visualisationState.IDLE)
             startAddingSeries(visualisation, $(this));
         else if(visualisation.state === visualisationState.ADDING_SERIES)
@@ -109,9 +107,7 @@ function activateAddSeriesIcons() {
 }
 
 function startAddingSeries(visualisation, addSeriesElement) {
-    var prev = session.activeVisualisation;
     visualisation.activate();
-    var curr = session.activeVisualisation;
     visualisation.state = visualisationState.ADDING_SERIES;
     addSeriesElement.closest('.ui.bottom.attached.label').css('background-color', 'lightyellow');
     addSeriesElement.children('.plus.icon')
@@ -150,7 +146,7 @@ function propagateVisIdToAllDescendants(object) {
     object.children().each(function() {
         $(this).attr('id', objectId);
         propagateVisIdToAllDescendants($(this));
-    })
+    });
 }
 
 function activateClickables() {

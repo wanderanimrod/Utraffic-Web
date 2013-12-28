@@ -3,6 +3,7 @@ describe("index.js", function() {
     beforeEach(function() {
         session = new Session();
         session.visualisations = [];
+        session.activeVisualisation = null;
     });
 
     describe("Adding Series to Visualisations", function() {
@@ -37,10 +38,8 @@ describe("index.js", function() {
         var mockVisCanvas;
         beforeEach(function() {
             window.session = session;
-
             mockVisCanvas = jQuery('<div class="vis front"></div><div class="vis front"></div>');
             mockVisCanvas.visElement = function(position) {
-                console.log($('.vis.front', mockVisCanvas)[position]);
                 return jQuery($('.vis.front', mockVisCanvas)[position]);
             };
         });
@@ -55,6 +54,17 @@ describe("index.js", function() {
             createVisualisationObjectsForUiElements();
             var visElementId = parseInt(mockVisCanvas.visElement(0).attr('id'));
             expect(visElementId).toBe(session.visualisations[0].id);
+        });
+    });
+
+    describe("enableTrackingOfObjectProperties", function() {
+        it("should throw an error if there is no active visualisation when a property is selected for tracking", function() {
+            var mockPropertyButton = jQuery('<div id="x"><div>');
+            spyOn(jQuery.fn, 'find').andReturn(mockPropertyButton);
+            var showErrorSpy = spyOn(window, 'showErrorMessage');
+            enableTrackingOfObjectProperties();
+            mockPropertyButton.click();
+            expect(showErrorSpy).toHaveBeenCalled();
         });
     });
 });
