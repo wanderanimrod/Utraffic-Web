@@ -26,7 +26,6 @@ function enableTrackingOfObjectProperties() {
     var objectProperties = $('.objectProperty');
     objectProperties.css('font-size', 7);
     objectProperties.click(function() {
-        var visualisation = session.activeVisualisation;
         if(!session.hasActiveVisualisation()) {
             showErrorMessage("No active visualisation to add property series to.");
             return;
@@ -35,6 +34,7 @@ function enableTrackingOfObjectProperties() {
             $(this).removeClass('objectPropertyTracked teal');
         }
         else {
+            var visualisation = session.activeVisualisation;
             $(this).addClass('objectPropertyTracked teal');
             visualisation.addSeries().then(function(series) {
                 addSeriesToVisualisation(visualisation, series);

@@ -1,7 +1,6 @@
 describe("index.js", function() {
-    var session;
+    var session = getSession();
     beforeEach(function() {
-        session = new Session();
         session.visualisations = [];
         session.activeVisualisation = null;
     });
@@ -37,7 +36,6 @@ describe("index.js", function() {
     describe("createVisualisationObjectForUiElements", function() {
         var mockVisCanvas;
         beforeEach(function() {
-            window.session = session;
             mockVisCanvas = jQuery('<div class="vis front"></div><div class="vis front"></div>');
             mockVisCanvas.visElement = function(position) {
                 return jQuery($('.vis.front', mockVisCanvas)[position]);
@@ -58,13 +56,26 @@ describe("index.js", function() {
     });
 
     describe("enableTrackingOfObjectProperties", function() {
-        it("should throw an error if there is no active visualisation when a property is selected for tracking", function() {
-            var mockPropertyButton = jQuery('<div id="x"><div>');
+        var mockPropertyButton;
+        beforeEach(function() {
+            mockPropertyButton = jQuery('<div><div>');
             spyOn(jQuery.fn, 'find').andReturn(mockPropertyButton);
+        });
+
+        it("should throw an error if there is no active visualisation when a property is selected for tracking", function() {
             var showErrorSpy = spyOn(window, 'showErrorMessage');
             enableTrackingOfObjectProperties();
             mockPropertyButton.click();
             expect(showErrorSpy).toHaveBeenCalled();
+        });
+        it("should add series to active visualisation when an object's property is selected for tracking", function() {
+            var visualisation = session.addNewVisualisation();
+            visualisation.activate();
+            enableTrackingOfObjectProperties();
+            mockPropertyButton.click();
+            setTimeout(function(){
+                expect(visualisation.series.length).toBe(1)
+            }, 500);
         });
     });
 });
