@@ -73,9 +73,12 @@ describe("index.js", function() {
             visualisation.activate();
             enableTrackingOfObjectProperties();
             mockPropertyButton.click();
-            setTimeout(function(){
-                expect(visualisation.series.length).toBe(1)
-            }, 500);
+            waitsFor(function() {
+                return visualisation.series.length === 1
+            }, "visualisation to have a series", 500);
+            runs(function() {
+                expect(visualisation.series.length).toBe(1);
+            });
         });
     });
 });
