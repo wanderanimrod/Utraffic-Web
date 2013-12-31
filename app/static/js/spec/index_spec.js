@@ -68,18 +68,13 @@ describe("index.js", function() {
             mockPropertyButton.click();
             expect(showErrorSpy).toHaveBeenCalled();
         });
-//        it("should add series to active visualisation when an object's property is selected for tracking", function() {
-//            var visualisation = createVisualisationAndAddASeries();
-//            var addSeriesToActiveVisualisationSpy = spyOn(window, 'addSeriesToActiveVisualisation').andCallThrough();
-//            waitsFor(function() {
-//                return visualisation.series.length > 0;
-//            }, "series to be added to the visualisation", 500);
-//            runs(function() {
-////                expect(visualisation.series.length).toBe(1);
-//                expect(addSeriesToActiveVisualisationSpy).toHaveBeenCalled();
-//            });
-//
-//        });
+        it("should make a call to addSeriesToActiveVisualisation when an object's property is tracked", function() {
+            session.addNewVisualisation().activate();
+            var addSeriesSpy = spyOn(window, 'addSeriesToActiveVisualisation').andCallThrough();
+            enableTrackingOfObjectProperties();
+            mockPropertyButton.click();
+            expect(addSeriesSpy).toHaveBeenCalled();
+        });
 //        it("should add series only to active visualisation when an object's property is selected for tracking", function() {
 //            var visualisation1 = createVisualisationAndAddASeries();
 //            var visualisation2 = createVisualisationAndAddASeries();
@@ -89,25 +84,27 @@ describe("index.js", function() {
 //            runs(function() {
 //                expect(visualisation1.series.length).toBe(1);
 //                expect(visualisation2.series.length).toBe(1);
-//            })
+//            });
 //        });
-
-        function createVisualisationAndAddASeries() {
-            var visualisation = session.addNewVisualisation();
-            visualisation.activate();
-            enableTrackingOfObjectProperties();
-            mockPropertyButton.click();
-            return visualisation;
-        }
     });
 
     describe("addSeriesToActiveVisualisation", function() {
-        it("should add a series to active visualisation", function(done) {
+        beforeEach(function() {
             session.addNewVisualisation().activate();
+        });
+
+        it("should add a series to active visualisation", function(done) {
             addSeriesToActiveVisualisation().then(function(visualisation) {
                 done();
                 expect(visualisation.series.length).toBe(1);
             });
         });
+        it("should add the series to the UI visualisation key", function(done) {
+            var addSeriesToVisKeySpy = spyOn(window, 'addSeriesToVisKey');
+            addSeriesToActiveVisualisation().then(function() {
+                done();
+                expect(addSeriesToVisKeySpy).toHaveBeenCalled();
+            });
+        })
     });
 });
