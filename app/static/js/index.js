@@ -34,14 +34,24 @@ function enableTrackingOfObjectProperties() {
             $(this).removeClass('objectPropertyTracked teal');
         }
         else {
-            var visualisation = session.activeVisualisation;
-            $(this).addClass('objectPropertyTracked teal');
-            visualisation.addSeries().then(function(series) {
-                addSeriesToVisualisation(visualisation, series);
-            }, function(error) {
-                showErrorMessage(Error(error));
-            });
+            addSeriesToActiveVisualisation().then(function() {
+                    $(this).addClass('objectPropertyTracked teal');
+                }, function(error) {
+                    showErrorMessage(Error(error));
+                });
         }
+    });
+}
+
+function addSeriesToActiveVisualisation() {
+    return new RSVP.Promise(function(resolve, reject) {
+        var visualisation = session.activeVisualisation;
+        visualisation.addSeries().then(function(series) {
+            addSeriesToVisKey(visualisation, series);
+            resolve(visualisation);
+        }, function(error) {
+            reject(Error(error));
+        });
     });
 }
 
@@ -91,7 +101,7 @@ function activateBackToVisIcons() {
     })
 }
 
-function addSeriesToVisualisation(visualisation, series) {
+function addSeriesToVisKey(visualisation, series) {
     var visKeyElement = visElementsOfType(visualisation.id, '.ui.bottom.attached.label');
     insertVisKeyItem(series, visKeyElement);
 }

@@ -1,1 +1,1 @@
-* Make all objects (specifically the visualisation object in the javascript) immutable
+* Sim API create series test is not running
