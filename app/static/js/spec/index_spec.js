@@ -85,13 +85,13 @@ describe("index.js", function() {
         });
         it("should add series only to active visualisation when an object's property is selected for tracking", function(done) {
             var visualisation1 = session.addNewVisualisation().activate();
-            spyOn(window, 'addSeriesToVisKey');
-            trackObjectProperty().then(function() {done();});
-            var visualisation2 = session.addNewVisualisation().activate();
             trackObjectProperty().then(function() {
-                done();
-                expect(visualisation1.series.length).toBe(1);
-                expect(visualisation2.series.length).toBe(1);
+                var visualisation2 = session.addNewVisualisation().activate();
+                trackObjectProperty().then(function() {
+                    done();
+                    expect(visualisation1.series.length).toBe(1);
+                    expect(visualisation2.series.length).toBe(1);
+                });
             });
         });
     });
