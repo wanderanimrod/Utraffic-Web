@@ -68,24 +68,32 @@ describe("index.js", function() {
             mockPropertyButton.click();
             expect(showErrorSpy).toHaveBeenCalled();
         });
-        it("should make a call to addSeriesToActiveVisualisation when an object's property is tracked", function() {
+        it("should make a call to trackObjectProperty when an object's property is tracked", function() {
             session.addNewVisualisation().activate();
-            var addSeriesSpy = spyOn(window, 'addSeriesToActiveVisualisation').andCallThrough();
+            var trackPropertySpy = spyOn(window, 'trackObjectProperty').andCallThrough();
             enableTrackingOfObjectProperties();
             mockPropertyButton.click();
+            expect(trackPropertySpy).toHaveBeenCalled();
+        });
+        it("should add series only to active visualisation when an object's property is selected for tracking", function() {
+            var visualisation1 = session.addNewVisualisation();
+            var visualisation2 = session.addNewVisualisation();
+            waitsFor(function() {
+                return visualisation1.series.length > 0 && visualisation2.series.length > 0
+            }, "a series to be added to both visualisations", 1000);
+            runs(function() {
+                expect(visualisation1.series.length).toBe(1);
+                expect(visualisation2.series.length).toBe(1);
+            });
+        });
+    });
+
+    describe("trackObjectProperty", function() {
+        it("should make a call to addSeriesToActiveVisualisation when called", function() {
+            var addSeriesSpy = spyOn(window, 'addSeriesToActiveVisualisation').andCallThrough();
+            trackObjectProperty();
             expect(addSeriesSpy).toHaveBeenCalled();
         });
-//        it("should add series only to active visualisation when an object's property is selected for tracking", function() {
-//            var visualisation1 = createVisualisationAndAddASeries();
-//            var visualisation2 = createVisualisationAndAddASeries();
-//            waitsFor(function() {
-//                return visualisation1.series.length > 0 && visualisation2.series.length > 0
-//            }, "a series to be added to both visualisations", 1000);
-//            runs(function() {
-//                expect(visualisation1.series.length).toBe(1);
-//                expect(visualisation2.series.length).toBe(1);
-//            });
-//        });
     });
 
     describe("addSeriesToActiveVisualisation", function() {

@@ -34,12 +34,21 @@ function enableTrackingOfObjectProperties() {
             $(this).removeClass('objectPropertyTracked teal');
         }
         else {
-            addSeriesToActiveVisualisation().then(function() {
+            trackObjectProperty().then(function(){
                     $(this).addClass('objectPropertyTracked teal');
-                }, function(error) {
-                    showErrorMessage(Error(error));
                 });
         }
+    });
+}
+
+function trackObjectProperty() {
+    return new RSVP.Promise(function(resolve, reject) {
+         addSeriesToActiveVisualisation()
+             .then(function() {
+                    resolve();
+                }, function(error) {
+                    throw error;
+                });
     });
 }
 
