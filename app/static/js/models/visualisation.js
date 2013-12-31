@@ -7,6 +7,7 @@ var Visualisation = function(id) {
 
     self.activate = function() {
         session.activeVisualisation = self;
+        return self;
     };
 
     self.addSeries = function() {

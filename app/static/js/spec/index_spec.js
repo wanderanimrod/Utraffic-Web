@@ -75,17 +75,6 @@ describe("index.js", function() {
             mockPropertyButton.click();
             expect(trackPropertySpy).toHaveBeenCalled();
         });
-        it("should add series only to active visualisation when an object's property is selected for tracking", function() {
-            var visualisation1 = session.addNewVisualisation();
-            var visualisation2 = session.addNewVisualisation();
-            waitsFor(function() {
-                return visualisation1.series.length > 0 && visualisation2.series.length > 0
-            }, "a series to be added to both visualisations", 1000);
-            runs(function() {
-                expect(visualisation1.series.length).toBe(1);
-                expect(visualisation2.series.length).toBe(1);
-            });
-        });
     });
 
     describe("trackObjectProperty", function() {
@@ -93,6 +82,17 @@ describe("index.js", function() {
             var addSeriesSpy = spyOn(window, 'addSeriesToActiveVisualisation').andCallThrough();
             trackObjectProperty();
             expect(addSeriesSpy).toHaveBeenCalled();
+        });
+        it("should add series only to active visualisation when an object's property is selected for tracking", function(done) {
+            var visualisation1 = session.addNewVisualisation().activate();
+            spyOn(window, 'addSeriesToVisKey');
+            trackObjectProperty().then(function() {done();});
+            var visualisation2 = session.addNewVisualisation().activate();
+            trackObjectProperty().then(function() {
+                done();
+                expect(visualisation1.series.length).toBe(1);
+                expect(visualisation2.series.length).toBe(1);
+            });
         });
     });
 
