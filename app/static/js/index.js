@@ -1,4 +1,4 @@
-var session = new Session();
+var session;
 
 function prepareGraphCanvas() {
     var graphCanvas = $("#graphingArea");
@@ -120,6 +120,7 @@ function activateClickables() {
 }
 
 $(document).ready(function() {
+    session = new Session();
     prepareGraphCanvas();
     createVisualisationObjectsForUiElements();
     copyVisIdsToAllDescendants();

@@ -1,5 +1,5 @@
 describe("index.js", function() {
-    var session = getSession();
+    var session = new Session();
     beforeEach(function() {
         session.visualisations = [];
         session.activeVisualisation = null;
