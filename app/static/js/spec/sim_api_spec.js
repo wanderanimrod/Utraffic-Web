@@ -3,13 +3,12 @@ describe("Sim API:", function() {
         it("should create series in the client-sim-engine", function(done) {
             createSeries().then(function(series) {
                 done();
-                var seriesIsValid = seriesIsValid(series);
-                expect(seriesIsValid).toBe(true);
+                expect(seriesIsValid(series)).toBe(true);
             });
         });
     });
 });
 
 function seriesIsValid(series) {
-    return typeof series.id === "number" && series.status === "active"
+    return typeof series.id === "number" && series.isComplete() === false
 }

@@ -101,10 +101,16 @@ describe("index.js", function() {
             session.addNewVisualisation().activate();
         });
 
-        it("should add a series to active visualisation", function(done) {
+        it("should add a series to visualisation", function(done) {
             addSeriesToActiveVisualisation().then(function(visualisation) {
                 done();
                 expect(visualisation.series.length).toBe(1);
+            });
+        });
+        it("should add series only to the active visualisation", function(done) {
+            addSeriesToActiveVisualisation().then(function(visualisation) {
+                done();
+                expect(visualisation.id).toBe(session.activeVisualisation.id);
             });
         });
         it("should add the series to the UI visualisation key", function(done) {
