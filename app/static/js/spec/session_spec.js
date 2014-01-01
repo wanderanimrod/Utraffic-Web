@@ -17,13 +17,23 @@ describe("Session", function() {
         var visualisation1 = session.addNewVisualisation();
         var visualisation2 = session.addNewVisualisation();
         var visualisation3 = session.addNewVisualisation();
-        expect(visualisation2.id).toBe(visualisation1.id + 1);
         expect(visualisation3.id).toBe(visualisation2.id + 1);
+        expect(visualisation2.id).toBe(visualisation1.id + 1);
     });
     it("should get visualisation by id", function() {
+        var visualisation1 = session.addNewVisualisation();
+        var visualisation2 = session.addNewVisualisation();
+        var returnedVisualisation2 = session.getVisualisation(visualisation2.id);
+        var returnedVisualisation1 = session.getVisualisation(visualisation1.id);
+        expect(returnedVisualisation2).toBe(visualisation2);
+        expect(returnedVisualisation1).toBe(visualisation1);
+    });
+    it("should throw an error when a visualisation that does not exist is requested", function() {
         var visualisation = session.addNewVisualisation();
-        var returnedVisualisation = session.getVisualisation(visualisation.id);
-        expect(returnedVisualisation).toBe(visualisation);
+        var inexistentVisId = visualisation.id + 1;
+        expect(function() {
+            session.getVisualisation(inexistentVisId)
+        }).toThrow(Error("Visualisation with id " + inexistentVisId + " not Found"));
     });
     it("should know if it has an active visualisation or not", function() {
         expect(session.hasActiveVisualisation()).toBe(false);

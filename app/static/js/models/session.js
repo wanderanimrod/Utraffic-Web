@@ -25,14 +25,14 @@ function Session() {
     };
 
     self.getVisualisation = function(visId) {
-        var visualisation;
         var visualisations = self.visualisations;
         for(var i = 0; i < visualisations.length; i++) {
-            visualisation = visualisations[i];
-            if(visualisation.id = visId)
+            var visualisation = visualisations[i];
+            if(visualisation.id === visId) {
                 return visualisation;
+            }
         }
-        return visualisation;
+        throw new Error("Visualisation with id " + visId + " not Found");
     };
 
     self.hasActiveVisualisation = function() {
