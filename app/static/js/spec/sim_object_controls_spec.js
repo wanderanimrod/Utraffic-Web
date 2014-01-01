@@ -1,4 +1,4 @@
-describe("index.js", function() {
+describe("Sim Object Controls", function() {
     describe("enableTrackingOfObjectProperties", function() {
         var mockPropertyButton;
         beforeEach(function() {

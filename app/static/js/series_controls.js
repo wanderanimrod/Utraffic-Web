@@ -1,14 +1,3 @@
-function trackObjectProperty() {
-    return new RSVP.Promise(function(resolve, reject) {
-         addSeriesToActiveVisualisation()
-             .then(function() {
-                    resolve();
-                }, function(error) {
-                    throw error;
-                });
-    });
-}
-
 function addSeriesToActiveVisualisation() {
     return new RSVP.Promise(function(resolve, reject) {
         var visualisation = session.activeVisualisation;

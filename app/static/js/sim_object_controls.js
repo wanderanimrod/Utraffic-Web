@@ -35,3 +35,14 @@ function enableTrackingOfObjectProperties() {
         }
     });
 }
+
+function trackObjectProperty() {
+    return new RSVP.Promise(function(resolve, reject) {
+         addSeriesToActiveVisualisation()
+             .then(function() {
+                    resolve();
+                }, function(error) {
+                    throw error;
+                });
+    });
+}
