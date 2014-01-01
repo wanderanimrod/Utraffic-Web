@@ -1,1 +1,0 @@
-* Sim API create series test is not running
