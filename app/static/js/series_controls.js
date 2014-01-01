@@ -17,7 +17,7 @@ function addSeriesToVisKey(visualisation, series) {
 
 function activateAddSeriesIcons() {
     $('.addSeries').click(function() {
-        var visualisation = session.getVisualisation($(this).attr('id'));
+        var visualisation = session.getVisualisation(parseInt($(this).attr('id')));
         if(visualisation.state === visualisationState.IDLE)
             startAddingSeries(visualisation, $(this));
         else if(visualisation.state === visualisationState.ADDING_SERIES)
