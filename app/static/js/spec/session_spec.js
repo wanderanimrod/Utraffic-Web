@@ -39,5 +39,4 @@ describe("Session", function() {
         var sessionFromGlobalObject = window.getSession();
         expect(session).toEqual(sessionFromGlobalObject);
     })
-
 });

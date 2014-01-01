@@ -51,6 +51,5 @@ function Session() {
         return windowSessionOrMe();
     };
 
-
     return windowSessionOrMe();
 }

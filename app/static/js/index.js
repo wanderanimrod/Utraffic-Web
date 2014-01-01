@@ -1,5 +1,14 @@
 var session;
 
+$(document).ready(function() {
+    session = new Session();
+    prepareGraphCanvas();
+    createVisualisationObjectsForUiElements();
+    copyVisIdsToAllDescendants();
+    activateClickables();
+    toggleObjectPropertyButtons();
+});
+
 function prepareGraphCanvas() {
     var graphCanvas = $("#graphingArea");
     var visRows = $('.visRow');
@@ -19,12 +28,3 @@ function activateClickables() {
     activateBackToVisIcons();
     activateAddSeriesIcons();
 }
-
-$(document).ready(function() {
-    session = new Session();
-    prepareGraphCanvas();
-    createVisualisationObjectsForUiElements();
-    copyVisIdsToAllDescendants();
-    activateClickables();
-    toggleObjectPropertyButtons();
-});
