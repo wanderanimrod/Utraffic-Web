@@ -29,20 +29,21 @@ function enableTrackingOfObjectProperties() {
             $(this).removeClass('objectPropertyTracked teal');
         }
         else {
-            trackObjectProperty().then(function(){
-                    $(this).addClass('objectPropertyTracked teal');
-                });
+            var button = $(this);
+            trackObjectProperty().then(function() {
+                button.addClass('objectPropertyTracked teal');
+            });
         }
     });
 }
 
 function trackObjectProperty() {
     return new RSVP.Promise(function(resolve, reject) {
-         addSeriesToActiveVisualisation()
-             .then(function() {
-                    resolve();
-                }, function(error) {
-                    throw error;
-                });
+        addSeriesToActiveVisualisation()
+            .then(function() {
+                resolve();
+            }, function(error) {
+                throw error;
+            });
     });
 }
