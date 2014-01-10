@@ -8,6 +8,14 @@ function Simulation() {
         });
     };
 
+    self.stop = function() {
+        return new RSVP.Promise(function(resolve, reject) {
+            //TODO Make API calls to simulation to stop
+            self.status = SimulationStatus.STOPPED;
+            resolve();
+        });
+    };
+
     function windowSimulationOrMe() {
         if(window.simulation === undefined) {
             window.simulation = self;
@@ -19,5 +27,6 @@ function Simulation() {
 }
 
 SimulationStatus = {
-    RUNNING: 0
+    RUNNING: 0,
+    STOPPED: 1
 };
