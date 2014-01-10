@@ -6,7 +6,16 @@ function Simulation() {
             self.status = SimulationStatus.RUNNING;
             resolve();
         });
+    };
+
+    function windowSimulationOrMe() {
+        if(window.simulation === undefined) {
+            window.simulation = self;
+            return self;
+        }
+        else return window.simulation;
     }
+    return windowSimulationOrMe();
 }
 
 SimulationStatus = {
