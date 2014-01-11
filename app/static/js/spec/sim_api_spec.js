@@ -1,9 +1,16 @@
 describe("Sim API:", function() {
-    describe("createSeries", function() {
-        it("should create series in the client-sim-engine", function(done) {
-            createSeries().then(function(series) {
+    it("should create series in the client-sim-engine", function(done) {
+        createSeries().then(function(series) {
+            done();
+            expect(seriesIsValid(series)).toBe(true);
+        });
+    });
+    it("should get series data given a valid series Id", function(done) {
+        createSeries().then(function(series) {
+            getSeriesData(series.id).then(function(data) {
                 done();
-                expect(seriesIsValid(series)).toBe(true);
+                expect(data.seriesId).toEqual(series.id);
+                expect(data.dataPoints.length).toBe(11);
             });
         });
     });

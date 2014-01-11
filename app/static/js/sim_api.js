@@ -6,3 +6,12 @@ function createSeries() {
         });
     });
 }
+
+function getSeriesData(seriesId) {
+    return new RSVP.Promise(function(resolve, reject) {
+        $.get('http://127.0.0.1:5000/series/' + seriesId + '/data/', function(response) {
+            resolve(response);
+        });
+    });
+
+}
