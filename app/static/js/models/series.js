@@ -1,7 +1,11 @@
 function Series(seriesJson) {
-    this.id = seriesJson.id;
-    this.data = seriesJson.data;
-    this.isComplete = function () {
+    var self = this;
+    self.id = seriesJson.id;
+    self.data = seriesJson.data;
+    self.isComplete = function () {
         return seriesJson.status === "complete";
+    };
+    self.startFetchingData = function() {
+
     };
 }

@@ -30,7 +30,9 @@ var Visualisation = function(id) {
     };
 
     self.start = function() {
-
+        self.series.forEach(function(series) {
+            series.startFetchingData();
+        });
     };
 };
 
