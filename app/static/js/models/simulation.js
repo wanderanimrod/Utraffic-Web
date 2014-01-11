@@ -4,6 +4,7 @@ function Simulation() {
         return new RSVP.Promise(function(resolve, reject) {
             //TODO Make API call to simulation to start
             self.status = SimulationStatus.RUNNING;
+            getSession().startVisualising();
             resolve();
         });
     };

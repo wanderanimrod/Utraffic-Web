@@ -39,6 +39,10 @@ function Session() {
         return self.activeVisualisation !== null;
     };
 
+    self.startVisualising = function() {
+
+    };
+
     function windowSessionOrMe() {
         if(window.session === undefined) {
             window.session = self;

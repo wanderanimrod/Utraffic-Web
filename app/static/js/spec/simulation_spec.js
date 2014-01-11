@@ -21,4 +21,11 @@ describe("Simulation", function() {
             expect(simulation.status).toBe(SimulationStatus.STOPPED);
         });
     });
+    it("should make visualisations start visualising data when started", function(done) {
+        var startVisualisingSpy = spyOn(session, 'startVisualising');
+        simulation.start().then(function() {
+            done();
+            expect(startVisualisingSpy).toHaveBeenCalled();
+        })
+    });
 });
