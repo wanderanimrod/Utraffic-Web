@@ -40,7 +40,9 @@ function Session() {
     };
 
     self.startVisualising = function() {
-
+        self.visualisations.forEach(function(visualisation) {
+            visualisation.start();
+        });
     };
 
     function windowSessionOrMe() {

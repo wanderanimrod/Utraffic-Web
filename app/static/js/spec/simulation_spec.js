@@ -26,6 +26,6 @@ describe("Simulation", function() {
         simulation.start().then(function() {
             done();
             expect(startVisualisingSpy).toHaveBeenCalled();
-        })
+        });
     });
 });

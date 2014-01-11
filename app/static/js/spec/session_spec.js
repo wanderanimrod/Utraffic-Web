@@ -48,5 +48,17 @@ describe("Session", function() {
     it("should attach a getSession() method on the global object that returns the session", function() {
         var sessionFromGlobalObject = window.getSession();
         expect(session).toEqual(sessionFromGlobalObject);
-    })
+    });
+
+    describe("startVisualising", function() {
+        it("should call 'start' on each visualisation in the session", function() {
+            var vis1 = session.addNewVisualisation();
+            var vis2 = session.addNewVisualisation();
+            var vis1StartSpy = spyOn(vis1, 'start');
+            var vis2StartSpy = spyOn(vis2, 'start');
+            session.startVisualising();
+            expect(vis1StartSpy).toHaveBeenCalled();
+            expect(vis2StartSpy).toHaveBeenCalled();
+        });
+    });
 });

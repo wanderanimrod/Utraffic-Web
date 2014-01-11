@@ -28,6 +28,10 @@ var Visualisation = function(id) {
         self.maxColorIndex += 1;
         return self.seriesColors(self.maxColorIndex);
     };
+
+    self.start = function() {
+
+    };
 };
 
 var visualisationState = {
