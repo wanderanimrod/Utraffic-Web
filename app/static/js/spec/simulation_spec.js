@@ -1,7 +1,8 @@
 describe("Simulation", function() {
-    var simulation;
+    var simulation, session;
     beforeEach(function() {
-        simulation = new Simulation();
+        session = getSession();
+        session.simulation = simulation = new Simulation();
     });
     it("should be monotone", function() {
         var sim1 = new Simulation();

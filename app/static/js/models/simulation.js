@@ -16,14 +16,15 @@ function Simulation() {
         });
     };
 
-    function windowSimulationOrMe() {
-        if(window.simulation === undefined) {
-            window.simulation = self;
-            return self;
+    function sessionSimulationOrMe() {
+        var session = getSession();
+        if(session.simulation === undefined) {
+            session.simulation = self;
+            return session.simulation;
         }
-        else return window.simulation;
+        else return session.simulation;
     }
-    return windowSimulationOrMe();
+    return sessionSimulationOrMe();
 }
 
 SimulationStatus = {
