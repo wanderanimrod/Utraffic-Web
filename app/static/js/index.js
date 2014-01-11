@@ -1,7 +1,8 @@
-var session;
+var session, simulation;
 
 $(document).ready(function() {
     session = new Session();
+    simulation = new Simulation();
     prepareGraphCanvas();
     createVisualisationObjectsForUiElements();
     copyVisIdsToAllDescendants();

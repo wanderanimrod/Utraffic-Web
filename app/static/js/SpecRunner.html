@@ -21,6 +21,7 @@
     <script type="text/javascript" src="series_controls.js"></script>
     <script type="text/javascript" src="visualisation_controls.js"></script>
     <script type="text/javascript" src="sim_object_controls.js"></script>
+    <script type="text/javascript" src="sim_controls.js"></script>
     <script type="text/javascript" src="index.js"></script>
     <script type="text/javascript" src="insertables.js"></script>
 
@@ -33,26 +34,23 @@
     <script type="text/javascript" src="spec/series_controls_spec.js"></script>
     <script type="text/javascript" src="spec/visualisation_controls_spec.js"></script>
     <script type="text/javascript" src="spec/simulation_spec.js"></script>
+    <script type="text/javascript" src="spec/sim_controls_spec.js"></script>
 
     <script type="text/javascript">
         (function () {
             var jasmineEnv = jasmine.getEnv();
             jasmineEnv.updateInterval = 1000;
-
             var htmlReporter = new jasmine.HtmlReporter();
-
             jasmineEnv.addReporter(htmlReporter);
 
             //phantom-jasmine console reporter
             window.console_reporter = new jasmine.ConsoleReporter();
             jasmine.getEnv().addReporter(console_reporter);
-
             jasmineEnv.specFilter = function (spec) {
                 return htmlReporter.specFilter(spec);
             };
 
             var currentWindowOnload = window.onload;
-
             window.onload = function () {
                 if (currentWindowOnload) {
                     currentWindowOnload();
@@ -63,7 +61,6 @@
             function execJasmine() {
                 jasmineEnv.execute();
             }
-
         })();
     </script>
 </head>

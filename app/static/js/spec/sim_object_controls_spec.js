@@ -2,7 +2,7 @@ describe("Sim Object Controls", function() {
     describe("enableTrackingOfObjectProperties", function() {
         var mockPropertyButton;
         beforeEach(function() {
-            mockPropertyButton = jQuery('<div><div>');
+            mockPropertyButton = jQuery('<span></span>');
             spyOn(jQuery.fn, 'find').andReturn(mockPropertyButton);
         });
 

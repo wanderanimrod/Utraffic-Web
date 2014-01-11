@@ -10,7 +10,7 @@ function Simulation() {
 
     self.stop = function() {
         return new RSVP.Promise(function(resolve, reject) {
-            //TODO Make API calls to simulation to stop
+            //TODO Make API call to simulation to stop
             self.status = SimulationStatus.STOPPED;
             resolve();
         });
