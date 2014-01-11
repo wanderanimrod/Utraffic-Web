@@ -16,11 +16,10 @@ function Session() {
 
     self.getMaxVisId = function() {
         var maxId = -1;
-        var visualisations = self.visualisations;
-        for(var i = 0; i < visualisations.length; i++) {
-            var currentId = visualisations[i].id;
+        self.visualisations.forEach(function(visualisation) {
+            var currentId = visualisation.id;
             if(currentId > maxId) maxId = currentId;
-        }
+        });
         return maxId;
     };
 
