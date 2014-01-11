@@ -16,13 +16,10 @@ describe("Sim API", function() {
     });
     it("should get only fresh series data", function(done) {
         createSeries().then(function(series) {
-            var dataFetchedFirst;
-            getSeriesData(series.id).then(function(data) {
-                dataFetchedFirst = data;
-                getSeriesData(series.id).then(function(data) {
+            getSeriesData(series.id).then(function() {
+                getSeriesData(series.id).then(function(dataOnSecondFetch) {
                     done();
-                    expect(dataFetchedFirst.dataPoints.length).toBe(11);
-                    expect(data.dataPoints).toEqual([]);
+                    expect(dataOnSecondFetch.dataPoints).toEqual([]);
                 });
             });
         });
