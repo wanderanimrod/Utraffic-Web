@@ -9,7 +9,6 @@ describe("Sim API", function() {
         createSeries().then(function(series) {
             getSeriesData(series.id).then(function(data) {
                 done();
-                expect(data.seriesId).toEqual(series.id);
                 expect(data.dataPoints.length).toBe(11);
             });
         });
@@ -20,6 +19,24 @@ describe("Sim API", function() {
                 getSeriesData(series.id).then(function(dataOnSecondFetch) {
                     done();
                     expect(dataOnSecondFetch.dataPoints).toEqual([]);
+                });
+            });
+        });
+    });
+    describe("Series Data", function() {
+        it("should contain series id", function(done) {
+            createSeries().then(function(series) {
+                getSeriesData(series.id).then(function(data) {
+                    done();
+                    expect(data.seriesId).toEqual(series.id);
+                });
+            });
+        });
+        it("should contain series status", function(done) {
+             createSeries().then(function(series) {
+                getSeriesData(series.id).then(function(data) {
+                    done();
+                    expect(data.seriesStatus).toEqual("active");
                 });
             });
         });
