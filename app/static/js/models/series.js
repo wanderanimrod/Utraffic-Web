@@ -7,7 +7,7 @@ function Series(seriesJson) {
         return self.status === "complete";
     };
     self.startFetchingData = function() {
-        while(self.isComplete()) {
+        while(!self.isComplete()) {
             getSeriesData(self.id).then(function(data) {
                 data.dataPoints.forEach(function(dataPoint) {
                     self.data.append(dataPoint);

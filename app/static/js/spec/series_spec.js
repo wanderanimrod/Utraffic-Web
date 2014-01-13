@@ -7,11 +7,21 @@ describe("Series", function() {
         var series = new Series({"status": "active"});
         expect(series.isComplete()).toBe(false);
     });
-    it("should stop fetching data from the API once it is complete", function(done) {
+    it("should complete series once data from api specifies that series is complete", function(done) {
         createSeries().then(function(series) {
             done();
             expect(series.isComplete()).toBe(false);
-//            series.startFetchingData();
+            spyOn(window, 'getSeriesData').andReturn(fakeDataForCompleteSeries);
+            series.startFetchingData();
+            expect(series.status).toBe("complete");
         });
     });
+    var fakeDataForCompleteSeries = {
+        "dataPoints": [
+            {"time": 0, "value": 0},
+            {"time": 1, "value": 10},
+        ],
+        "seriesId": 0,
+        "seriesStatus": "complete"
+    }
 });
