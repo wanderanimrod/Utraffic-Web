@@ -7,21 +7,35 @@ describe("Series", function() {
         var series = new Series({"status": "active"});
         expect(series.isComplete()).toBe(false);
     });
-    it("should complete series once data from api specifies that series is complete", function(done) {
-        createSeries().then(function(series) {
-            done();
-            expect(series.isComplete()).toBe(false);
-            spyOn(window, 'getSeriesData').andReturn(fakeDataForCompleteSeries);
-            series.startFetchingData();
+    it("should complete series once data from api specifies that series is complete", function() {
+        var series = null;
+        createSeries().then(function(seriesCreated) {
+            series = seriesCreated;
+            expect(seriesCreated.isComplete()).toBe(false);
+            spyOn(window, 'getSeriesData').andCallFake(fakeSeriesDataPromise);
+            seriesCreated.startFetchingData();
+        });
+        waitsFor(function() {
+            return series !== null;
+        }, "series to be constructed", 1500);
+        runs(function() {
             expect(series.status).toBe("complete");
         });
     });
+
     var fakeDataForCompleteSeries = {
         "dataPoints": [
-            {"time": 0, "value": 0},
-            {"time": 1, "value": 10},
+            {"time": 0, "value": 3},
+            {"time": 1, "value": 10}
         ],
         "seriesId": 0,
         "seriesStatus": "complete"
+    };
+
+    function fakeSeriesDataPromise() {
+        console.log("FAKE getSeriesData called");
+        return new RSVP.Promise(function(resolve) {
+            resolve(fakeDataForCompleteSeries);
+        });
     }
 });
