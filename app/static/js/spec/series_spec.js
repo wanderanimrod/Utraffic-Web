@@ -11,20 +11,46 @@ describe("Series", function() {
         var series = new Series({"status": "incomplete"});
         expect(series.data).toEqual([]);
     });
-    it("should complete series once data from api specifies that series is complete", function() {
-        var series = null;
-        createSeries().then(function(seriesCreated) {
-            series = seriesCreated;
-            expect(seriesCreated.isComplete()).toBe(false);
-            spyOn(window, 'getSeriesData').andCallFake(fakeSeriesDataPromise);
-            seriesCreated.startFetchingData();
+
+    describe("startFetchingData", function() {
+        it("should add all data fetched from api to the series object", function() {
+            var series = null;
+            createSeriesAndStartFetchingData().then(function(runningSeries) {
+                series = runningSeries;
+            });
+            waitsFor(function() {
+                return series !== null;
+            }, "series to be constructed", 500);
+            runs(function() {
+                expect(series.data).toEqual([
+                    {"time": 0, "value": 3},
+                    {"time": 1, "value": 10}
+                ]);
+            });
         });
-        waitsFor(function() {
-            return series !== null;
-        }, "series to be constructed", 1500);
-        runs(function() {
-            expect(series.status).toBe("complete");
+        it("should complete series once data from api specifies that series is complete", function() {
+            var series = null;
+            createSeriesAndStartFetchingData().then(function(runningSeries) {
+                series = runningSeries;
+            });
+            waitsFor(function() {
+                return series !== null;
+            }, "series to be constructed", 500);
+            runs(function() {
+                expect(series.status).toBe("complete");
+            });
         });
+
+        function createSeriesAndStartFetchingData() {
+            return new RSVP.Promise(function(resolve) {
+                createSeries().then(function(seriesCreated) {
+                    expect(seriesCreated.isComplete()).toBe(false);
+                    spyOn(window, 'getSeriesData').andCallFake(fakeSeriesDataPromise);
+                    seriesCreated.startFetchingData();
+                    resolve(seriesCreated);
+                });
+            });
+        }
     });
 
     var fakeDataForCompleteSeries = {
