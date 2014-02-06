@@ -7,6 +7,10 @@ describe("Series", function() {
         var series = new Series({"status": "active"});
         expect(series.isComplete()).toBe(false);
     });
+    it("should make series data an empty array when no data is passed in construction json", function() {
+        var series = new Series({"status": "incomplete"});
+        expect(series.data).toEqual([]);
+    });
     it("should complete series once data from api specifies that series is complete", function() {
         var series = null;
         createSeries().then(function(seriesCreated) {
