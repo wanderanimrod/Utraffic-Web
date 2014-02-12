@@ -7,15 +7,25 @@ function Series(seriesJson) {
     self.isComplete = function() {
         return self.status === "complete";
     };
+
     self.startFetchingData = function() {
         getSeriesData(self.id).then(function(incomingData) {
-            incomingData.dataPoints.forEach(function(dataPoint) {
-                self.data.push(dataPoint);
-            });
+            addDataPointsToSeries(incomingData.dataPoints);
+            renderSeriesData(incomingData.dataPoints);
             self.status = incomingData.seriesStatus;
-            if(!self.isComplete()) {
-                setTimeout(self.startFetchingData(), 200);
-            }
+            fetchAgainIfIncomplete();
         });
     };
+
+    function addDataPointsToSeries(dataPoints) {
+        dataPoints.forEach(function(dataPoint) {
+            self.data.push(dataPoint);
+        });
+    }
+
+    function fetchAgainIfIncomplete() {
+        if(!self.isComplete()) {
+            setTimeout(self.startFetchingData(), 500);
+        }
+    }
 }

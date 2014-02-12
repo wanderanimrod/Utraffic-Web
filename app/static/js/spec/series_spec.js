@@ -41,6 +41,20 @@ describe("Series", function() {
             });
         });
 
+        it("should call data renderer when new data is fetched from API", function() {
+            var series = null;
+            var renderDataSpy = spyOn(window, 'renderSeriesData');
+            createSeriesAndStartFetchingData().then(function(runningSeries) {
+                series = runningSeries;
+            });
+            waitsFor(function() {
+                return series !== null;
+            }, "series to be constructed", 500);
+            runs(function() {
+                expect(renderDataSpy).toHaveBeenCalledWith(fakeDataForCompleteSeries.dataPoints);
+            })
+        });
+
         function createSeriesAndStartFetchingData() {
             return new RSVP.Promise(function(resolve) {
                 createSeries().then(function(seriesCreated) {

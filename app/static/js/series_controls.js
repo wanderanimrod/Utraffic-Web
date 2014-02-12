@@ -43,3 +43,5 @@ function finishAddingSeries(visualisation, addSeriesUiElement) {
         .css('color', '');
     visualisation.state = visualisationState.IDLE;
 }
+
+function renderSeriesData(data) {}
