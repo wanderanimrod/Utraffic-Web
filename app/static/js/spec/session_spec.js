@@ -41,7 +41,7 @@ describe("Session", function() {
         visualisation.activate();
         expect(session.hasActiveVisualisation()).toBe(true);
     });
-    it("should only be one instance, i.e. Monotone", function() {
+    it("should only be one instance, i.e. monotone", function() {
         var session2 = new Session();
         expect(session2).toEqual(session);
     });

@@ -77,7 +77,6 @@ describe("Series", function() {
     };
 
     function fakeSeriesDataPromise() {
-        console.log("FAKE getSeriesData called");
         return new RSVP.Promise(function(resolve) {
             resolve(fakeDataForCompleteSeries);
         });
