@@ -44,6 +44,16 @@ function Session() {
         });
     };
 
+    self.getParentVisualisation = function(series) {
+        var visualisations = self.visualisations;
+        for(var i = 0; i < visualisations.length; i++) {
+            var visualisation = visualisations[i];
+            if(visualisation.hasSeries(series))
+                return visualisation;
+        }
+        throw new Error("Parent visualisation for series '" + series.id + "' not found.");
+    };
+
     function windowSessionOrMe() {
         if(window.session === undefined) {
             window.session = self;

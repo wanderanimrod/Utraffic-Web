@@ -46,8 +46,19 @@ describe("Session", function() {
         expect(session2).toEqual(session);
     });
     it("should attach a getSession() method on the global object that returns the session", function() {
-        var sessionFromGlobalObject = window.getSession();
-        expect(session).toEqual(sessionFromGlobalObject);
+        var globalSession = window.getSession();
+        expect(session).toEqual(globalSession);
+    });
+    it("should find the visualisation a series belongs to", function(done) {
+        session.addNewVisualisation();
+        var visualisation2 = session.addNewVisualisation();
+        spyOn(window, 'createSeries').andCallFake(createSeriesFake);
+        visualisation2.addSeries().then(function(series) {
+            done();
+            expect(session.visualisations.length).toBe(2);
+            var parentVisualisation = session.getParentVisualisation(series);
+            expect(parentVisualisation).toEqual(visualisation2);
+        });
     });
 
     describe("startVisualising", function() {

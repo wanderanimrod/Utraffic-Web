@@ -44,4 +44,6 @@ function finishAddingSeries(visualisation, addSeriesUiElement) {
     visualisation.state = visualisationState.IDLE;
 }
 
-function renderSeriesData(data) {}
+function renderSeriesData(data) {
+
+}

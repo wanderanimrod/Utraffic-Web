@@ -48,6 +48,13 @@ describe("Visualisation", function() {
             });
         });
     });
+    it("should know if a series belongs to it", function(done) {
+        spyOn(window, 'createSeries').andCallFake(createSeriesFake);
+        visualisation.addSeries().then(function(series) {
+            done();
+            expect(visualisation.hasSeries(series)).toBe(true);
+        });
+    });
 });
 
 describe("Visualisations", function() {

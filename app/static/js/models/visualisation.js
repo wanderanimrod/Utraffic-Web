@@ -22,6 +22,18 @@ var Visualisation = function(id) {
         });
     };
 
+    self.hasSeries = function(series) {
+        var hasSeries = false;
+        var visualisationSeries = self.series;
+        for(var i = 0; i < visualisationSeries.length; i++) {
+            if(series.id === visualisationSeries[i].id) {
+                hasSeries = true;
+                break;
+            }
+        }
+        return hasSeries;
+    };
+
     self.maxColorIndex = -1;
     self.seriesColors = d3.scale.category10();
     self.getNextSeriesColor = function() {
