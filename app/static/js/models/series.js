@@ -11,8 +11,8 @@ function Series(seriesJson) {
     self.startFetchingData = function() {
         getSeriesData(self.id).then(function(incomingData) {
             addDataPointsToSeries(incomingData.dataPoints);
-            renderSeriesData(incomingData.dataPoints);
             self.status = incomingData.seriesStatus;
+            renderSeriesData(incomingData.dataPoints, self);
             fetchAgainIfIncomplete();
         });
     };

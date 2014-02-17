@@ -51,7 +51,7 @@ describe("Series", function() {
                 return series !== null;
             }, "series to be constructed", 500);
             runs(function() {
-                expect(renderDataSpy).toHaveBeenCalledWith(fakeDataForCompleteSeries.dataPoints);
+                expect(renderDataSpy).toHaveBeenCalledWith(fakeDataForCompleteSeries.dataPoints, series);
             })
         });
 
