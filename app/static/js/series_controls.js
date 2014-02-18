@@ -47,6 +47,6 @@ function finishAddingSeries(visualisation, addSeriesUiElement) {
 function renderSeriesData(newData, series) {
     var parentVis = getSession().getParentVisualisation(series);
     var visCanvas = visElementsOfType(parentVis.id, '.visCanvas');
-//    visCanvas.append('<div>' + newData + '</div>');
-    console.log(newData);
+    visCanvas.append('<div>' + newData + '</div>');
+    console.log("Series", series);
 }

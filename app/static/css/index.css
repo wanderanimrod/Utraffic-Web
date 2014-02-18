@@ -31,6 +31,11 @@
 .visPane {
     position: relative;
 }
+.visCanvas {
+    padding-top: 6%;
+    padding-left: 2%;
+    padding-right: 2%;
+}
 .visKeyItem, .addSeries {
     display: inline-block;
     padding-right: 10px;
