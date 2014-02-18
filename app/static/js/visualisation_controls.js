@@ -2,7 +2,7 @@ $('.showsOnlyOnVis').css('display', 'none');
 $('.visPaneControls').css('padding', '.25em .5em');
 
 function visElementsOfType(visId, type) {
-    return $("#" + visId + type);
+    return $("#" + elementIdFromVisId(visId) + type);
 }
 
 function activateAddVisSigns() {
@@ -41,7 +41,7 @@ function createVisualisationObjectsForUiElements() {
         if($(this).hasClass('front')) {
             visualisation = session.addNewVisualisation();
         }
-        $(this).attr('id', visualisation.id);
+        $(this).attr('id', elementIdFromVisId(visualisation.id));
     });
 }
 

@@ -32,9 +32,8 @@
     position: relative;
 }
 .visCanvas {
-    padding-top: 6%;
-    padding-left: 2%;
-    padding-right: 2%;
+    padding: 5% 2% 1%;
+    height: 79%;
 }
 .visKeyItem, .addSeries {
     display: inline-block;

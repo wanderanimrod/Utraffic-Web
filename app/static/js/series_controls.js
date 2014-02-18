@@ -15,9 +15,17 @@ function addSeriesToVisKey(visualisation, series) {
     insertVisKeyItem(series, visKeyElement);
 }
 
+function visIdFromElementId(element) {
+    return element.attr('id').split('-')[1];
+}
+
+function elementIdFromVisId(visId) {
+    return 'vis-' + visId;
+}
+
 function activateAddSeriesIcons() {
     $('.addSeries').click(function() {
-        var visualisation = session.getVisualisation(parseInt($(this).attr('id')));
+        var visualisation = session.getVisualisation(parseInt(visIdFromElementId($(this))));
         if(visualisation.state === visualisationState.IDLE)
             startAddingSeries(visualisation, $(this));
         else if(visualisation.state === visualisationState.ADDING_SERIES)
