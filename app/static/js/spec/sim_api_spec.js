@@ -1,4 +1,9 @@
 describe("Sim API", function() {
+    var debugSpy;
+    beforeEach(function() {
+        debugSpy = spyOn(appSettings, 'debug').andReturn(false); //Test against the real api
+    });
+
     it("should create series in the client-sim-engine", function(done) {
         createSeries().then(function(series) {
             done();
@@ -6,6 +11,7 @@ describe("Sim API", function() {
         });
     });
     it("should get series data given a valid series Id", function(done) {
+        debugSpy.andReturn(true); //Test against dummy series so we can have some data
         createSeries().then(function(series) {
             getSeriesData(series.id).then(function(data) {
                 done();
