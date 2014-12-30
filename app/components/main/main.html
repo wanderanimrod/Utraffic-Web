@@ -1,0 +1,17 @@
+<h3 class="ui block header">Utraffic Visualiser</h3>
+
+<div class="ui grid" style="margin-top: 30px;">
+    <div id="controlBar" class="four wide column">
+        <sim-controls></sim-controls>
+        <div class="ui segment">
+            <sim-object-control-menu></sim-object-control-menu>
+            <sim-object-list></sim-object-list>
+        </div>
+    </div>
+    <div id="graphingArea" class="twelve wide column" style="height: 700px;">
+        <visualisation-row></visualisation-row>
+        <visualisation-row></visualisation-row>
+    </div>
+</div>
+<!--TODO Move all files imported below into js-level requires.-->
+{% include 'index_statics.html' %}

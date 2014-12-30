@@ -6,22 +6,9 @@
     <link href="/static/css/index.css" rel="stylesheet" media="screen">
 </head>
 <body>
-<h3 class="ui block header">Utraffic Visualiser</h3>
-
-<div class="ui grid" style="margin-top: 30px;">
-    <div id="controlBar" class="four wide column">
-        {% include 'sim_controls.html' %}
-        <div class="ui segment">
-            {% include 'sim_objects_control_menu.html' %}
-            {% include 'sim_objects_list.html' %}
-        </div>
-    </div>
-    <div id="graphingArea" class="twelve wide column" style="height: 700px;">
-        {% for visRow in range(2) %}
-            {% include 'visualisations_row.html' %}
-        {% endfor %}
-    </div>
+<div id="index-page">
+    <main-component></main-component>
 </div>
-{% include 'index_statics.html' %}
 </body>
+<script src="/build/app.js"></script>
 </html>

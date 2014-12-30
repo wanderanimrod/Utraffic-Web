@@ -38,3 +38,5 @@ nosetests.xml
 .pydevproject
 
 app/static/js/debug.js
+
+app/node_modules
