@@ -12,7 +12,7 @@ module.exports = function(grunt) {
         browserify: {
             dist: {
                 files: {
-                    'build/app.js': ['components/**/*.js', 'models/**/*.js']
+                    'static/build/app.js': ['components/**/*.js', 'models/**/*.js']
                 },
                 options: {
                     transform: [require('stringify')()]

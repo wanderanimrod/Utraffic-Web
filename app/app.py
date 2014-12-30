@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 import flask
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='./static')
 app.debug = True
 
 app.db = None

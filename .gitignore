@@ -40,3 +40,4 @@ nosetests.xml
 app/static/js/debug.js
 
 app/node_modules
+app/static/bower_components

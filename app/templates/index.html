@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/html">
 <head>
     <title>Utraffic Visualiser</title>
-    <link href="/static/css/semantic/packaged/css/semantic.min.css" rel="stylesheet" media="screen">
-    <link href="/static/css/index.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" class="ui" type="text/css" href="{{ url_for('static', filename='bower_components/semantic-ui/dist/semantic.min.css') }}" media="screen">
+    <link href="{{ url_for('static', filename='css/index.css')}}">
 </head>
 <body>
 <div id="index-page">
     <main-component></main-component>
 </div>
 </body>
-<script src="/build/app.js"></script>
+<script src="{{ url_for('static', filename='build/app.js') }}"></script>
 </html>
