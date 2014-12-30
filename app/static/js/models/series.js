@@ -13,6 +13,7 @@ function Series(seriesJson) {
             addDataPointsToSeries(incomingData.dataPoints);
             self.status = incomingData.seriesStatus;
             renderSeriesData(incomingData.dataPoints, self);
+            //TODO Use set interval instead
             fetchAgainIfIncomplete();
         });
     };
