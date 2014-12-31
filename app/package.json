@@ -7,7 +7,8 @@
     "vue": "~0.10.6",
     "d3": "~3.4.13",
     "superagent": "~0.20.0",
-    "superagent-promise": "~0.2.0"
+    "superagent-promise": "~0.2.0",
+    "rsvp": "~3.0.16"
   },
   "devDependencies": {
     "grunt-browserify": "~3.1.0",

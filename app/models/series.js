@@ -1,4 +1,4 @@
-function Series(seriesJson) {
+var Series = function(seriesJson) {
     var self = this;
     self.id = seriesJson.id;
     self.data = seriesJson.dataPoints;
@@ -29,4 +29,6 @@ function Series(seriesJson) {
             setTimeout(self.startFetchingData(), 500);
         }
     }
-}
+};
+
+module.exports = Series;
