@@ -3,5 +3,8 @@ module.exports = {
     components: {
         'visualisation-front': require('./front.js'),
         'visualisation-back': require('./back.js')
+    },
+    data: {
+        side: 'back'
     }
 };

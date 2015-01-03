@@ -1,19 +1,9 @@
 .page-content {
     padding: 30px;
 }
-.vis.front {
-    background-color: whitesmoke;
-}
 .clear-vis:hover {
     color: red;
     cursor: pointer;
-}
-.vis.back {
-    background-color: gainsboro;
-}
-.visCanvas {
-    padding: 5% 2% 1%;
-    height: 79%;
 }
 .objectProperty {
     visibility: hidden;
@@ -25,4 +15,5 @@ visualisation-pane {
     background-image: url("/static/images/grey.png");
     border: 1px solid rgba(220, 220, 220, 0.49);
     border-radius: 0.65%;
+    height: 550px;
 }
