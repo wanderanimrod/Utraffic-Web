@@ -11,5 +11,9 @@ describe('Sim Object List', function() {
         var simObject = require('../../components/sim-object/sim-object.js');
         expect(vm.components['sim-object']).toEqual(simObject);
     });
+    it('should have two cars as sim objects', function() {
+        var expectedObjects = [{id: 0},{id: 1}];
+        expect(vm.data.simObjects).toEqual(expectedObjects)
+    })
 });
 

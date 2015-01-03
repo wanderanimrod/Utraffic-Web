@@ -1,10 +1,6 @@
 <div class="ui divided list">
-    <!--TODO Remove this repetition-->
-    <sim-object></sim-object>
-    <sim-object></sim-object>
-    <sim-object></sim-object>
-    <sim-object></sim-object>
-    <sim-object></sim-object>
-    <sim-object></sim-object>
-    <sim-object></sim-object>
+    <h3 class="header">Sim Objects</h3>
+    <div class="item" v-repeat="simObjects">
+        <sim-object></sim-object>
+    </div>
 </div>
