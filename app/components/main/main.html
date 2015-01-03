@@ -1,17 +1,18 @@
-<h3 class="ui block header">Utraffic Visualiser</h3>
-
-<div class="ui grid" style="margin-top: 30px;">
-    <div id="controlBar" class="four wide column">
-        <sim-controls></sim-controls>
-        <div class="ui segment">
-            <sim-object-control-menu></sim-object-control-menu>
-            <sim-object-list></sim-object-list>
+<h2 class="ui inverted top attached header pageBanner">Utraffic Visualiser</h2>
+<div class="page-content">
+    <div class="ui grid">
+        <div class="two wide column">
+            <sim-controls></sim-controls>
         </div>
     </div>
-    <div id="graphingArea" class="twelve wide column" style="height: 700px;">
-        <visualisation-row></visualisation-row>
-        <visualisation-row></visualisation-row>
+    <div class="ui clearing divider"></div>
+    <div class="ui padded grid">
+        <!--<div class="four wide column">-->
+        <!--<div class="ui segment">-->
+        <!--<sim-object-control-menu></sim-object-control-menu>-->
+        <!--<sim-object-list></sim-object-list>-->
+        <!--</div>-->
+        <!--</div>-->
+        <visualisation-pane class="column" style="height: 500px;"></visualisation-pane>
     </div>
 </div>
-<!--TODO Move all files imported below into js-level requires.-->
-{% include 'index_statics.html' %}

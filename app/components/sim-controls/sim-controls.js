@@ -1,3 +1,3 @@
 module.exports = {
-    template: require('./sim-controls.js')
+    template: require('./sim-controls.html')
 };
