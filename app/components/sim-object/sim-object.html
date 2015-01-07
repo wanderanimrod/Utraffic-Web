@@ -1,13 +1,12 @@
 <div class="content aligned">
     <div class="ui grid">
         <div class="two wide column">
-            <a class="ui huge circular label">{{id}}</a>
+            <a class="ui large circular label">{{simObject.id}}</a>
         </div>
         <div class="fourteen wide right aligned column">
-            <div class="mini ui button objectProperty">vel</div>
-            <div class="mini ui button objectProperty">acc</div>
-            <div class="mini ui button objectProperty">pos</div>
-            <div class="mini ui button objectProperty">lane</div>
+            <object-property v-repeat="property: simObject.properties"
+                             v-on="click: trackProperty(property.name, simObject.id)">
+            </object-property>
         </div>
     </div>
 </div>
