@@ -11,6 +11,5 @@ describe('Visualisation Pane Back', function() {
         var simObjectList = require('../../components/sim-object-list/sim-object-list.js');
         expect(vm.components['sim-object-list']).toEqual(simObjectList);
     });
-    it('should')
 });
 
