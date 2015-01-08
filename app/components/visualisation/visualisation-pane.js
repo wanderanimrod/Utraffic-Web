@@ -4,15 +4,14 @@ module.exports = {
         'visualisation-front': require('./front.js'),
         'visualisation-back': require('./back.js')
     },
-    created: function() {
-        this.$on('tracked-status-changed', function(property, objectId) {
-            console.log('received in parent');
-            this.$broadcast('tracked-status-changed', property, objectId);
-        });
-    },
     data: function(){
         return {
             side: 'back'
+        }
+    },
+    events: {
+        'tracked-status-changed': function(property, objectId) {
+            this.$broadcast('tracked-status-changed', property, objectId);
         }
     }
 };

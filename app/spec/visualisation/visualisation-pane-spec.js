@@ -18,4 +18,10 @@ describe('Visualisation Pane', function() {
     it('should show the back side by default', function() {
         expect(vm.data().side).toBe('back');
     });
+    it('should reflect the tracked-status-changed event down to child vms when the same is received', function() {
+        var instantiatedVm = {$broadcast: function() {}};
+        var broadcastSpy = spyOn(instantiatedVm, '$broadcast');
+        vm.events['tracked-status-changed'].call(instantiatedVm, 'vel', 10);
+        expect(broadcastSpy).toHaveBeenCalledWith('tracked-status-changed', 'vel', 10);
+    });
 });
