@@ -6,11 +6,11 @@ module.exports = {
     },
     created: function() {
         this.$on('tracked-status-changed', function(property, objectId) {
-            this.$data.trackedProperties.push({object: objectId, property: property})
+            console.log('received in parent');
+            this.$broadcast('tracked-status-changed', property, objectId);
         });
     },
     data: {
-        side: 'back',
-        trackedProperties: []
+        side: 'back'
     }
 };

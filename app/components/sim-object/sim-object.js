@@ -2,7 +2,7 @@ module.exports = {
     template: require('./sim-object.html'),
     methods: {
         trackProperty: function(property, objectId) {
-            console.log("clicked");
+            console.log("fired");
             this.$dispatch('tracked-status-changed', property, objectId);
         }
     },
