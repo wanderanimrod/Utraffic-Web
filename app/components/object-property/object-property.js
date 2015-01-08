@@ -1,6 +1,8 @@
 module.exports = {
     template: require('./object-property.html'),
-    data: {
-        isTracked: false
+    data: function() {
+        return {
+            isTracked: false
+        }
     }
 };

@@ -10,7 +10,9 @@ module.exports = {
             this.$broadcast('tracked-status-changed', property, objectId);
         });
     },
-    data: {
-        side: 'back'
+    data: function(){
+        return {
+            side: 'back'
+        }
     }
 };

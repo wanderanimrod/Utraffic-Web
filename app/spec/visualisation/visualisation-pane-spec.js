@@ -16,6 +16,6 @@ describe('Visualisation Pane', function() {
         expect(vm.template).toEqual(template);
     });
     it('should show the back side by default', function() {
-        expect(vm.data.side).toBe('back');
+        expect(vm.data().side).toBe('back');
     });
 });

@@ -11,17 +11,11 @@ describe('Sim Object List ', function() {
         var simObject = require('../../components/sim-object/sim-object.js');
         expect(vm.components['sim-object']).toEqual(simObject);
     });
-    describe(' when created', function() {
-        var instantiatedVm = {};
-        beforeEach(function() {
-           vm.created.call(instantiatedVm)
-        });
-        it('should have two cars as sim objects', function() {
-            var expectedObjects = [
-                {id: 0, properties : [ { name : 'vel' }, { name : 'acc' }, { name : 'pos' }, { name : 'lane' } ]},
-                {id: 1, properties : [ { name : 'vel' }, { name : 'acc' }, { name : 'pos' }, { name : 'lane' } ]}
-            ];
-            expect(instantiatedVm.simObjects).toEqual(expectedObjects);
-        });
+    it('should have two cars as sim objects', function() {
+        var expectedObjects = [
+            {id: 0, properties : [ { name : 'vel' }, { name : 'acc' }, { name : 'pos' }, { name : 'lane' } ]},
+            {id: 1, properties : [ { name : 'vel' }, { name : 'acc' }, { name : 'pos' }, { name : 'lane' } ]}
+        ];
+        expect(vm.data().simObjects).toEqual(expectedObjects);
     });
 });

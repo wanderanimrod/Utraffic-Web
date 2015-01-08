@@ -1,4 +1,5 @@
 var Vue = require('vue');
+Vue.config.debug = true;
 
 var options = {
     el: '#index-page',

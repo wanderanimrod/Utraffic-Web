@@ -6,7 +6,9 @@ module.exports = {
             this.trackedProperties.push({object: objectId, property: property})
         });
     },
-    data: {
-        trackedProperties: []
+    data: function() {
+        return {
+            trackedProperties: []
+        }
     }
 };
