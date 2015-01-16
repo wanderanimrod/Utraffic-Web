@@ -24,9 +24,13 @@ describe('Visualisation Pane', function() {
         vm.events['tracked-status-changed'].call(instantiatedVm, 'vel', 10);
         expect(broadcastSpy).toHaveBeenCalledWith('tracked-status-changed', 'vel', 10);
     });
-    it('should switch visible side to front when vis-setup-done event is fired', function() {
-        var instantiatedVm = {side: ''};
-        vm.events['vis-setup-done'].call(instantiatedVm);
+    it('should toggle visible side when switch-vis-face event is fired', function() {
+        var instantiatedVm = {side: 'back'};
+
+        vm.events['switch-vis-face'].call(instantiatedVm);
         expect(instantiatedVm.side).toBe('front');
+
+        vm.events['switch-vis-face'].call(instantiatedVm);
+        expect(instantiatedVm.side).toBe('back');
     });
 });

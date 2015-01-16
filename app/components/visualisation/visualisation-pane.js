@@ -13,8 +13,12 @@ module.exports = {
         'tracked-status-changed': function(property, objectId) {
             this.$broadcast('tracked-status-changed', property, objectId);
         },
-        'vis-setup-done': function() {
-            this.side = 'front'
+        'switch-vis-face': function() {
+            var currentlyVisibleSide = this.side;
+            if(currentlyVisibleSide === 'front')
+                this.side = 'back';
+            else
+                this.side = 'front';
         }
     }
 };
