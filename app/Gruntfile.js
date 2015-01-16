@@ -5,7 +5,7 @@ module.exports = function(grunt) {
             files: [
                 'components/**/*.js',
                 'components/**/*.html',
-                'models/**/*.js'
+                'models/*.js'
             ],
             tasks: ['browserify']
         },

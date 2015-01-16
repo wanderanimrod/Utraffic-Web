@@ -1,5 +1,8 @@
 module.exports = {
     template: require('./front.html'),
+    created: function() {
+        this.visualisation = require('../../models/visualisation.js');
+    },
     data: function() {
         return {
             trackedProperties: []
@@ -7,14 +10,13 @@ module.exports = {
     },
     events: {
         'tracked-status-changed': function(property, objectId) {
-            this.trackedProperties.push({object: objectId, property: property})
+            this.visualisation.togglePropertyTrackedStatus({name: property, object: objectId})
         }
     },
     methods: {
         print: function() {
-            console.log(this.trackedProperties);
-            console.log(this.trackedProperties.map(function(property) {
-                return property.property + " " + property.object
+            console.log(this.visualisation.trackedProperties.map(function(property) {
+                return property.name + " " + property.object
             }));
         }
     }
