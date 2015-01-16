@@ -18,4 +18,8 @@ describe('Visualisation Pane Front', function() {
         vm.events['tracked-status-changed'].call(vm, 'vel', 10);
         expect(instantiatedVm.visualisation.trackedProperties).toEqual([{object: 10, name: 'vel'}])
     });
+    it('should have highchart component', function() {
+        var highchart = require('../../components/highchart/highchart.js');
+        expect(vm.components['high-chart']).toEqual(highchart);
+    });
 });

@@ -19,5 +19,8 @@ module.exports = {
                 return property.name + " " + property.object
             }));
         }
+    },
+    components: {
+        'high-chart': require('../highchart/highchart.js')
     }
 };

@@ -6,7 +6,7 @@ module.exports = {
     },
     data: function(){
         return {
-            side: 'back'
+            side: 'front'
         }
     },
     events: {
