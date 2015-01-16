@@ -1,15 +1,15 @@
 <div class="ui top right attached label">
     <i class="link close icon clear-vis"></i>
 </div>
-<div class="ui bottom attached label">
-    <div class="ui right aligned grid">
-        <div class="column">
-            <div class="ui compact tiny secondary button">Done</div>
-        </div>
-    </div>
-</div>
 <div class="ui centered grid">
     <div class="four wide column">
         <sim-object-list></sim-object-list>
+    </div>
+</div>
+<div class="ui bottom attached label">
+    <div class="ui right aligned grid">
+        <div class="column">
+            <div class="ui compact tiny secondary button" v-on="click: done()">Done</div>
+        </div>
     </div>
 </div>

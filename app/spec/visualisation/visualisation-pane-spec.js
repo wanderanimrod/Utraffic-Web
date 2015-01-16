@@ -24,4 +24,9 @@ describe('Visualisation Pane', function() {
         vm.events['tracked-status-changed'].call(instantiatedVm, 'vel', 10);
         expect(broadcastSpy).toHaveBeenCalledWith('tracked-status-changed', 'vel', 10);
     });
+    it('should switch visible side to front when vis-setup-done event is fired', function() {
+        var instantiatedVm = {side: ''};
+        vm.events['vis-setup-done'].call(instantiatedVm);
+        expect(instantiatedVm.side).toBe('front');
+    });
 });

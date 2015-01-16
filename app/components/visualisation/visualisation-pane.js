@@ -12,6 +12,9 @@ module.exports = {
     events: {
         'tracked-status-changed': function(property, objectId) {
             this.$broadcast('tracked-status-changed', property, objectId);
+        },
+        'vis-setup-done': function() {
+            this.side = 'front'
         }
     }
 };

@@ -7,7 +7,7 @@ describe('Visualisation Pane Front', function() {
         var template = require('../../components/visualisation/front.html');
         expect(vm.template).toEqual(template);
     });
-    it('should add object property to trackedProperties when track even is fired', function() {
+    it('should add object property to trackedProperties when track event is fired', function() {
         vm.trackedProperties = [];
         vm.events['tracked-status-changed'].call(vm, 'vel', 10);
         expect(vm.trackedProperties).toEqual([{object: 10, property: 'vel'}])

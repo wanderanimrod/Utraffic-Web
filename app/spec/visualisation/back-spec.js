@@ -11,5 +11,13 @@ describe('Visualisation Pane Back', function() {
         var simObjectList = require('../../components/sim-object-list/sim-object-list.js');
         expect(vm.components['sim-object-list']).toEqual(simObjectList);
     });
+    it('should switch visualisation pane to front when done', function() {
+        var instantiatedVm = {$dispatch: function() {}};
+        var dispatchSpy = spyOn(instantiatedVm, '$dispatch');
+
+        vm.methods.done.call(instantiatedVm);
+
+        expect(dispatchSpy).toHaveBeenCalledWith('vis-setup-done');
+    });
 });
 
