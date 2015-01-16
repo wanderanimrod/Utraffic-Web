@@ -4,9 +4,11 @@
             <a class="ui large circular label">{{simObject.id}}</a>
         </div>
         <div class="fourteen wide right aligned column">
-            <object-property v-repeat="simObject.properties"
-                             v-on="click: trackProperty(name, simObject.id)">
-            </object-property>
+            <span v-repeat="property: simObject.properties">
+                <object-property v-on="click: trackProperty(property.name, simObject.id)"
+                                 v-with="property, isTracked: false">
+                </object-property>
+            </span>
         </div>
     </div>
 </div>

@@ -12,8 +12,9 @@ module.exports = {
     },
     methods: {
         print: function() {
+            console.log(this.trackedProperties);
             console.log(this.trackedProperties.map(function(property) {
-                return property.property + " " + property.objectId
+                return property.property + " " + property.object
             }));
         }
     }
