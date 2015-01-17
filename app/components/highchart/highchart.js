@@ -2,7 +2,6 @@ module.exports = {
     template: require('./highchart.html'),
     ready: function() {
         var element = this.$el;
-        console.log(element);
         new Highcharts.Chart({
             chart: {
                 renderTo: element,
