@@ -13,13 +13,6 @@ module.exports = {
             this.visualisation.togglePropertyTrackedStatus({name: property, object: objectId})
         }
     },
-    methods: {
-        print: function() {
-            console.log(this.visualisation.trackedProperties.map(function(property) {
-                return property.name + " " + property.object
-            }));
-        }
-    },
     components: {
         'high-chart': require('../highchart/highchart.js')
     }

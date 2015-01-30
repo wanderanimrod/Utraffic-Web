@@ -5,23 +5,52 @@ module.exports = {
         new Highcharts.Chart({
             chart: {
                 renderTo: element,
-                type: 'bar'
+                type: 'line',
+                events: {
+                    load: function () {
+                        var series = this.series[0];
+                        setInterval(function () {
+                            var x = (new Date()).getTime(),
+                                y = Math.random();
+                            series.addPoint([x, y], true, false);
+                        }, 1000);
+                    }
+                }
             },
             title: {
-                text: 'Fruit Consumption'
+                text: 'Simulation data'
             },
             xAxis: {
-                categories: ['Apples', 'Bananas', 'Oranges']
+                type: 'time',
+                tickPixelInterval: 150
             },
             yAxis: {
                 title: {
-                    text: 'Fruit eaten'
-                }
+                    text: 'Value'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
             },
-            series: [
-                {name: 'Jane', data: [1, 0, 4]},
-                {name: 'John', data: [5, 7, 3]}
-            ]
+            legend: {
+                enabled: true
+            },
+            series: [{
+                name: 'vel 0',
+                data: (function () {
+                    var data = [];
+                    var time = (new Date()).getTime();
+                    for (var i = -19; i <= 0; i += 1) {
+                        data.push({
+                            x: time + i * 1000,
+                            y: Math.random()
+                        });
+                    }
+                    return data;
+                }())
+            }]
         })
     }
 };
