@@ -14,6 +14,6 @@ module.exports = {
         }
     },
     components: {
-        'high-chart': require('../highchart/highchart.js')
+        'live-chart': require('../live-chart/live-chart.js')
     }
 };

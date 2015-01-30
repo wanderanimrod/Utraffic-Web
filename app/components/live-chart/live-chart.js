@@ -1,5 +1,5 @@
 module.exports = {
-    template: require('./highchart.html'),
+    template: require('./live-chart.html'),
     ready: function() {
         var element = this.$el;
         new Highcharts.Chart({
