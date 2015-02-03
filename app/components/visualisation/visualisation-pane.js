@@ -2,7 +2,7 @@ module.exports = {
     template: require('./visualisation-pane.html'),
     data: function(){
         return {
-            side: 'front'
+            side: 'back'
         }
     },
     events: {
