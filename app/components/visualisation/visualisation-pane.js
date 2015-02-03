@@ -1,17 +1,13 @@
 module.exports = {
     template: require('./visualisation-pane.html'),
-    components: {
-        'visualisation-front': require('./front.js'),
-        'visualisation-back': require('./back.js')
-    },
     data: function(){
         return {
             side: 'front'
         }
     },
     events: {
-        'tracked-status-changed': function(property, objectId) {
-            this.$broadcast('tracked-status-changed', property, objectId);
+        'tracked-status-changed': function(objectProperty) {
+            this.$broadcast('tracked-status-changed', objectProperty);
         },
         'switch-vis-face': function() {
             var currentlyVisibleSide = this.side;
@@ -20,5 +16,9 @@ module.exports = {
             else
                 this.side = 'front';
         }
+    },
+    components: {
+        'visualisation-front': require('./front.js'),
+        'visualisation-back': require('./back.js')
     }
 };

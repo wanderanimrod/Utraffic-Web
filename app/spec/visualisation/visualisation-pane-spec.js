@@ -19,10 +19,12 @@ describe('Visualisation Pane', function() {
         expect(vm.data().side).toBe('back');
     });
     it('should reflect the tracked-status-changed event down to child vms when the same is received', function() {
+        var ObjectProperty = require('../../models/object-property.js');
         var instantiatedVm = {$broadcast: function() {}};
+        var objectProperty = new ObjectProperty('vel', 10);
         var broadcastSpy = spyOn(instantiatedVm, '$broadcast');
-        vm.events['tracked-status-changed'].call(instantiatedVm, 'vel', 10);
-        expect(broadcastSpy).toHaveBeenCalledWith('tracked-status-changed', 'vel', 10);
+        vm.events['tracked-status-changed'].call(instantiatedVm, objectProperty);
+        expect(broadcastSpy).toHaveBeenCalledWith('tracked-status-changed', objectProperty);
     });
     it('should toggle visible side when switch-vis-face event is fired', function() {
         var instantiatedVm = {side: 'back'};

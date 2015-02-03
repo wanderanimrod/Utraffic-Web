@@ -1,26 +1,31 @@
 describe('Visualisation', function() {
-    var visualisation;
+    var vis, ObjectProperty, Visualisation;
     beforeEach(function() {
-        visualisation = require('../../models/visualisation.js');
+        Visualisation = require('../../models/visualisation.js');
+        vis = new Visualisation();
+        ObjectProperty = require('../../models/object-property.js');
     });
 
     afterEach(function() {
-        visualisation.trackedProperties = [];
+        vis.trackedProperties = [];
     });
 
     it('should add new property to tracked properties if it is not already tracked', function() {
-        var property = {object: 1, name: 'vel'};
-        visualisation.togglePropertyTrackedStatus(property);
-        expect(visualisation.trackedProperties).toContain(property)
+        var property = new ObjectProperty('vel', 1);
+        var status = vis.togglePropertyTrackedStatus(property);
+        expect(vis.trackedProperties).toEqual([property]);
+        expect(status).toEqual(Visualisation.PROPERTY_TRACKED_STATUS.ON)
     });
 
     it('should remove property from tracked properties if it is already tracked', function() {
-        var property = {object: 1, name: 'vel'};
-        visualisation.togglePropertyTrackedStatus(property);
+        var velocityCarOne = new ObjectProperty('vel', 1);
+        vis.togglePropertyTrackedStatus(velocityCarOne);
 
-        visualisation.togglePropertyTrackedStatus({object: 2, name: 'acc'});
+        var accelerationCarTwo = new ObjectProperty('acc', 2);
+        vis.togglePropertyTrackedStatus(accelerationCarTwo);
 
-        visualisation.togglePropertyTrackedStatus(property);
-        expect(visualisation.trackedProperties).toEqual([{object: 2, name: 'acc'}]);
+        var status = vis.togglePropertyTrackedStatus(velocityCarOne);
+        expect(vis.trackedProperties).toEqual([accelerationCarTwo]);
+        expect(status).toEqual(Visualisation.PROPERTY_TRACKED_STATUS.OFF)
     });
 });

@@ -15,4 +15,10 @@ describe('Main Component', function() {
         var template = require('../../components/main/main.html');
         expect(vm.template).toEqual(template);
     });
+    it("should redirect 'start' event down to children when the same event is received", function() {
+        var instantiatedVm = {$broadcast: function() {}};
+        var broadcastSpy = spyOn(instantiatedVm, '$broadcast');
+        vm.events['start'].call(instantiatedVm);
+        expect(broadcastSpy).toHaveBeenCalledWith('start');
+    });
 });
