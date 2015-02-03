@@ -40,15 +40,20 @@ describe("Live Chart Component", function() {
         });
 
         it('should remove series from chart if the property tracked status is OFF', function() {
-            instantiatedVm.highChart.series = [
-                {name: objectProperty.stringify()}
-            ];
+            var series = {
+                name: objectProperty.stringify(),
+                remove: function() {
+                }
+            };
+            instantiatedVm.highChart.series = [series];
+
             spyOn(instantiatedVm.visualisation, 'togglePropertyTrackedStatus')
                 .and.returnValue(Visualisation.PROPERTY_TRACKED_STATUS.OFF);
+            var removeSeriesSpy = spyOn(series, 'remove');
 
             vm.events['tracked-status-changed'].call(instantiatedVm, objectProperty);
 
-            expect(instantiatedVm.highChart.series).toEqual([])
+            expect(removeSeriesSpy).toHaveBeenCalled();
         });
 
     })

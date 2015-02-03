@@ -27,7 +27,6 @@ module.exports = {
             }
             else if(status === Visualisation.PROPERTY_TRACKED_STATUS.OFF) {
                 removeSeries.call(this.highChart, objectProperty.stringify());
-//                this.highChart.redraw(false);
             }
         }
     }
@@ -37,7 +36,7 @@ var removeSeries = function(nameOfSeriesToRemove) {
     var chart = this;
     chart.series.some(function(currentSeries, index) {
         if(currentSeries.name === nameOfSeriesToRemove) {
-            chart.series.splice(index, 1);
+            chart.series[index].remove();
             return true;
         }
     });
