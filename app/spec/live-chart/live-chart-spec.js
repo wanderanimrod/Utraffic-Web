@@ -35,7 +35,7 @@ describe("Live Chart Component", function() {
             vm.events['tracked-status-changed'].call(instantiatedVm, objectProperty);
 
             expect(instantiatedVm.highChart.series).toEqual([
-                {name: objectProperty.stringify()}
+                {name: objectProperty.stringify(), objectProperty: objectProperty}
             ])
         });
 

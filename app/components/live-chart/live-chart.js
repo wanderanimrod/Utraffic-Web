@@ -24,6 +24,8 @@ module.exports = {
             var status = this.visualisation.togglePropertyTrackedStatus(objectProperty);
             if(status === Visualisation.PROPERTY_TRACKED_STATUS.ON) {
                 this.highChart.addSeries({name: objectProperty.stringify()}, true, false);
+                var series = this.highChart.series;
+                series[series.length - 1].objectProperty = objectProperty;
             }
             else if(status === Visualisation.PROPERTY_TRACKED_STATUS.OFF) {
                 removeSeries.call(this.highChart, objectProperty.stringify());
