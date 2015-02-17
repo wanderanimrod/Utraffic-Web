@@ -37,7 +37,7 @@ nosetests.xml
 .project
 .pydevproject
 
-app/static/js/debug.js
+backend/static/js/debug.js
 
-app/node_modules
-app/static/bower_components
+backend/node_modules
+backend/static/bower_components
